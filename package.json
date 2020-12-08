@@ -1,0 +1,16 @@
+{
+  "name": "sssdiscordbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.jsnpm i ms"
+  },
+  "author": "Munajat A.H.",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "ms": "^2.1.2"
+  }
+}
