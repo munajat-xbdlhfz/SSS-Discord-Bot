@@ -4,11 +4,11 @@ module.exports = {
     execute(guildMember, Discord) {
         // Random text for saying goodbye
         const goodbye = [
-            `It seems ${guildMember} has left us...`,
-            `Goodbye ${guildMember}, see yaa!!`,
-            `Goodbye to our comrades ${guildMember}`,
-            `${guildMember}, why you left? we will miss you...`,
-            `${guildMember} just left the server`
+            `It seems **${guildMember.user.username}** has left us...`,
+            `Goodbye **${guildMember.user.username}**, see yaa!!`,
+            `Goodbye to our comrades **${guildMember.user.username}**`,
+            `**${guildMember.user.username}**, why you left? we will miss you...`,
+            `**${guildMember.user.username}** just left the server`
         ]
         
         const index = Math.floor(Math.random() * goodbye.length);
