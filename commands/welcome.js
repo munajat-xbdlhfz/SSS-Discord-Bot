@@ -9,7 +9,7 @@ module.exports = {
         .addFields(
             {
                 name: 'WELCOME TO OUR DISCORD SERVER!', 
-                value: `Selamat datang ${guildMember} \n`+
+                value: `Selamat datang ${guildMember.user.tag} \n`+
                         `Selamat bergabung di SSS Discord Server \n`+
                         `Silahkan membaca <#${process.env.RULES_ID}> terlebih dahulu \n`+
                         `Dan jangan lupa untuk mengisi <#${process.env.GREETINGS_ID}> biar akrab`
