@@ -1,4 +1,4 @@
-// require('dotenv').config();
+require('dotenv').config();
 
 module.exports = {
     name: 'welcome',
@@ -20,6 +20,7 @@ module.exports = {
         // .setTimestamp()
         .setFooter("Let's hunt together & Happy Hunting!");
 
-        return newEmbed;
+        const channel = guildMember.guild.channels.cache.get(process.env.WELCOME_ID)
+        channel.send(newEmbed)
     }
 }

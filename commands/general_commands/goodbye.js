@@ -12,6 +12,7 @@ module.exports = {
         ]
         
         const index = Math.floor(Math.random() * goodbye.length);
-        return goodbye[index];
+        const channel = guildMember.guild.channels.cache.get(process.env.GOODBYE_ID)
+        channel.send(goodbye[index])
     }
 }
