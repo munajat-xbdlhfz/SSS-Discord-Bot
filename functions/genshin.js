@@ -102,9 +102,7 @@ const assignItem = async (guildId, userId, rwrd, rrty) => {
             }
 
             return
-        } finally {
-            mongoose.connection.close()
-        }
+        } catch (err) { console.log(err) } 
     })
 }
 
@@ -141,9 +139,7 @@ const printCharacters = async (guildId, userId) => {
             }
 
             return output
-        } finally {
-            mongoose.connection.close()
-        }
+        } catch (err) { console.log(err) } 
     })
 }
 
@@ -180,9 +176,7 @@ const printWeapons = async (guildId, userId) => {
             }
 
             return output
-        } finally {
-            mongoose.connection.close()
-        }
+        } catch (err) { console.log(err) } 
     })
 }
 

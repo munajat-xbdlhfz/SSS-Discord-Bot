@@ -46,9 +46,7 @@ const claimDaily = async (guildId, userId) => {
 
             msg = `you have claimed ${primogems} ✦`
             return msg
-        } finally {
-            mongoose.connection.close()
-        }
+        } catch (err) { console.log(err) } 
     })
 }
 
@@ -93,9 +91,7 @@ const claimWeekly = async (guildId, userId) => {
 
             msg = `you have claimed ${primogems} ✦`
             return msg
-        } finally {
-            mongoose.connection.close()
-        }
+        } catch (err) { console.log(err) } 
     })
 }
 

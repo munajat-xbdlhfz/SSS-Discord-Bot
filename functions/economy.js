@@ -21,9 +21,7 @@ const addPrimogems = async (guildId, userId, primogems) => {
             }
 
             return result.primogems
-        } finally {
-            mongoose.connection.close()
-        }
+        } catch (err) { console.log(err) } 
     })
 }
 
@@ -71,9 +69,7 @@ const getPrimogems = async (guildId, userId) => {
                 pitty5Star,
                 pitty4Star
             }
-        } finally {
-            mongoose.connection.close()
-        }
+        } catch (err) { console.log(err) } 
     })
 }
 
@@ -97,9 +93,7 @@ const gacha = async (guildId, userId, dataUser) => {
             }
 
             return result.primogems
-        } finally {
-            mongoose.connection.close()
-        }
+        } catch (err) { console.log(err) } 
     })
 }
 
