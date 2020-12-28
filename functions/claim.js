@@ -27,7 +27,7 @@ const claimDaily = async (guildId, userId) => {
                 }
             }
             
-            await dailyPrimogemsSchema.findOneAndUpdate(userData, claim, {
+            await dailyPrimogemsSchema.findOneAndUpdate(userData, userData, {
                 upsert: true
             })
 
@@ -72,7 +72,7 @@ const claimWeekly = async (guildId, userId) => {
                 }
             }
             
-            await weeklyPrimogemsSchema.findOneAndUpdate(userData, claim, {
+            await weeklyPrimogemsSchema.findOneAndUpdate(userData, userData, {
                 upsert: true
             })
 
