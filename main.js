@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const Discord = require("discord.js");
 const mongo = require('./mongo');
 const commandList = require('./commands/index')

@@ -1,14 +1,13 @@
 const { standardWish, assignItem } = require('../../functions/genshin')
 const constants = require('../../constants')
 const { getPrimogems, gacha } = require('../../functions/economy')
-const Discord = require("discord.js");
 
 module.exports = {
     name : "single_pull",
     description: "Make a single pull",
     args: true,
     dmAllow: true,
-    async execute (message, args) {
+    async execute (message, args, Discord) {
         const sender = message.author;
         const guildId = message.guild.id
         const userId = sender.id

@@ -1,5 +1,4 @@
 const { addPrimogems } = require('../../functions/economy')
-require('dotenv').config();
 
 module.exports = {
     name: 'give_primogems',

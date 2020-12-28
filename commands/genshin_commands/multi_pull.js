@@ -7,7 +7,7 @@ module.exports = {
     description: "Make a multi pull",
     args: true,
     dmAllow: true,
-    async execute (message, args) {
+    async execute (message, args, Discord) {
         const sender = message.author;
         const guildId = message.guild.id
         const userId = sender.id
