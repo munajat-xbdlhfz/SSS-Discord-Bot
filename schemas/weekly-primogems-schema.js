@@ -5,10 +5,17 @@ const reqString = {
     required: true
 }
 
+const reqBool = {
+    type: Boolean,
+    default: false,
+    required: true
+}
+
 const weeklyPrimogemsSchema = mongoose.Schema(
     {
         guildId: reqString,
-        userId: reqString
+        userId: reqString,
+        claim: reqBool,
     }, 
     {
         timestamps: true
