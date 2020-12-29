@@ -61,17 +61,17 @@ client.on("message", (message) => {
             return;
         }
 
-        case (getCommand === "primogem") : {
+        case (getCommand === "primogems") : {
             commands.check_primogems.execute(message, args)
             return;
         }
 
-        case (getCommand === "mycharacter") : {
+        case (getCommand === "mycharacters") : {
             commands.check_characters.execute(message, args, Discord)
             return;
         }
 
-        case (getCommand === "myweapon") : {
+        case (getCommand === "myweapons") : {
             commands.check_weapons.execute(message, args, Discord)
             return;
         }

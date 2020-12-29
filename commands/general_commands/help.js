@@ -8,21 +8,23 @@ module.exports = {
         .setDescription(
             `✦ **Genshin Impact**\n`+
             `Gacha and collect genshin impact characters and weapons.\n\n`+
+
             `__**CLAIM PRIMOGEMS**__\n`+
             `**$daily**: Claim your daily primogems (1600 primogems a day)\n`+
             `**$weekly**: Claim your weekly primogems (16000 primogems a week)\n\n`+
+
             `__**CHECK INVENTORY**__\n`+
-            `**$mycharacter**: Inventory of your characters.\n`+
+            `**$mycharacters**: Inventory of your characters.\n`+
             `**$myweapons**: Inventory of your weapons.\n\n`+
-            `__**CHECK INVENTORY**__\n`+
-            `**$mycharacter**: Inventory of your characters.\n`+
-            `**$myweapons**: Inventory of your weapons.\n\n`+
+
             `__**MAKE A WISH (GACHA)**__\n`+
             `**$singlepull**: Gacha 1x.\n`+
             `**$multipull**: Gacha 10x.\n\n`+
+
             `__**UTILITY**__\n`+
-            `**$primogem**: Check  the remaining primogems.\n`+
+            `**$primogems**: Check  the remaining primogems.\n`+
             `**$give @User <Primogems>**: (admin) Gift primogems to user.\n\n`+
+
             `__**OPTIONS/FILTER LIST:**__\n`+
             `List of flags (options/filters):\n`+
             `**sp** (singlepull), **mp** (multipull)\n`
