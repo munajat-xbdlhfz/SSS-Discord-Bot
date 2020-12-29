@@ -6,30 +6,26 @@ module.exports = {
         .setColor('#0000FF')
         .setAuthor("S.S.S", "https://cdn.discordapp.com/attachments/732668771231334501/785610049925152799/sSs_Logo_White.png")
         .setDescription(
-            `
-            ✦ **Genshin Impact**
-            Gacha and collect genshin impact characters and weapons.
-            
-            __**CLAIM PRIMOGEMS**__
-            **$daily**: Claim your daily primogems (1600 primogems a day)
-            **$weekly**: Claim your weekly primogems (16000 primogems a week)
-
-            __**CHECK INVENTORY**__
-            **$mycharacter**: Inventory of your characters.
-            **$myweapons**: Inventory of your weapons.
-
-            __**MAKE A WISH (GACHA)**__
-            **$singlepull**: Gacha 1x.
-            **$multipull**: Gacha 10x.
-
-            __**UTILITY**__
-            **$primogem**: Check  the remaining primogems.
-            **$give @User <Primogems>**: (admin) Gift primogems to user.
-
-            __**OPTIONS/FILTER LIST:**__
-            List of flags (options/filters):
-            **sp** (singlepull), **mp** (multipull)
-            `
+            `✦ **Genshin Impact**\n`+
+            `Gacha and collect genshin impact characters and weapons.\n\n`+
+            `__**CLAIM PRIMOGEMS**__\n`+
+            `**$daily**: Claim your daily primogems (1600 primogems a day)\n`+
+            `**$weekly**: Claim your weekly primogems (16000 primogems a week)\n\n`+
+            `__**CHECK INVENTORY**__\n`+
+            `**$mycharacter**: Inventory of your characters.\n`+
+            `**$myweapons**: Inventory of your weapons.\n\n`+
+            `__**CHECK INVENTORY**__\n`+
+            `**$mycharacter**: Inventory of your characters.\n`+
+            `**$myweapons**: Inventory of your weapons.\n\n`+
+            `__**MAKE A WISH (GACHA)**__\n`+
+            `**$singlepull**: Gacha 1x.\n`+
+            `**$multipull**: Gacha 10x.\n\n`+
+            `__**UTILITY**__\n`+
+            `**$primogem**: Check  the remaining primogems.\n`+
+            `**$give @User <Primogems>**: (admin) Gift primogems to user.\n\n`+
+            `__**OPTIONS/FILTER LIST:**__\n`+
+            `List of flags (options/filters):\n`+
+            `**sp** (singlepull), **mp** (multipull)\n`
         )
 
         message.author.send(newEmbed)
