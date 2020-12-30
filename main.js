@@ -66,12 +66,12 @@ client.on("message", (message) => {
             return;
         }
 
-        case (getCommand === "mycharacters") : {
+        case (getCommand === "mycharacters" || getCommand === "mc") : {
             commands.check_characters.execute(message, args, Discord)
             return;
         }
 
-        case (getCommand === "myweapons") : {
+        case (getCommand === "myweapons" || getCommand === "mw") : {
             commands.check_weapons.execute(message, args, Discord)
             return;
         }

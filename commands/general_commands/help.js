@@ -27,7 +27,7 @@ module.exports = {
 
             `__**OPTIONS/FILTER LIST:**__\n`+
             `List of flags (options/filters):\n`+
-            `**sp** (singlepull), **mp** (multipull)\n`
+            `**sp** (singlepull), **mp** (multipull), **mc** (mycharacters), **mw** (myweapons)\n`
         )
 
         message.author.send(newEmbed)
