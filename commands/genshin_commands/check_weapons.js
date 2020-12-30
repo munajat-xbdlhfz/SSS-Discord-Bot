@@ -14,7 +14,7 @@ module.exports = {
         if (getWeapons) {
             const newEmbed = new Discord.MessageEmbed()
             .setColor('#0000FF')
-            .setAuthor(`${message.author.username} Characters`, `${message.author.displayAvatarURL()}`)
+            .setAuthor(`${message.author.username} Weapons`, `${message.author.displayAvatarURL()}`)
             .setDescription(getWeapons)
 
             mention = `<@${sender.id}>\n`
