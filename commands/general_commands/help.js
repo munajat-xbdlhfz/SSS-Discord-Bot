@@ -10,6 +10,7 @@ module.exports = {
             `Gacha and collect genshin impact characters and weapons.\n\n`+
 
             `__**CLAIM PRIMOGEMS**__\n`+
+            `Claim daily will reset every day at 3:00AM (GMT+7), and claim weekly will reset on Monday at 3:00AM (GMT+7)\n`+
             `**$daily**: Claim your daily primogems (1600 primogems a day)\n`+
             `**$weekly**: Claim your weekly primogems (16000 primogems a week)\n\n`+
 
