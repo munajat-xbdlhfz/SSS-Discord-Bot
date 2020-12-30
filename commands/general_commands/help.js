@@ -17,7 +17,7 @@ module.exports = {
             `__**CHECK INVENTORY**__\n`+
             `**$mycharacters**: Inventory of your characters.\n`+
             `**$mycharacters @User**: Inventory of mentioned user characters.\n`+
-            `**$myweapons**: Inventory of your weapons.\n\n`+
+            `**$myweapons**: Inventory of your weapons.\n`+
             `**$myweapons @User**: Inventory of mentioned user weapons.\n\n`+
 
             `__**MAKE A WISH (GACHA)**__\n`+
