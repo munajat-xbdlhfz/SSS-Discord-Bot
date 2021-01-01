@@ -17,6 +17,18 @@ const addPrimogems = async (guildId, userId, primogems) => {
     })
 }
 
+const giveAllPrimogems = async (guildId, primogems) => {
+    return await mongo().then(async (mongoose) => {
+        try {
+            const addPrimogems = {guildId, $inc: { primogems }}
+            const result = await profileSchema.updateMany({ guildId }, addPrimogems, {
+                upsert: true,
+                new: true
+            })
+        } catch (err) { console.log(err) }
+    })
+}
+
 const getPrimogems = async (guildId, userId) => {
     return await mongo().then(async (mongoose) => {
         try {
@@ -68,4 +80,5 @@ module.exports = {
     addPrimogems,
     getPrimogems,
     gacha,
+    giveAllPrimogems,
 }

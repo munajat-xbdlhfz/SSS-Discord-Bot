@@ -6,6 +6,7 @@ const claim_weekly = require('./claim_weekly')
 const give_primogems = require('./give_primogems')
 const multi_pull = require('./multi_pull')
 const single_pull = require('./single_pull')
+const give_all_primogems = require('./give_all_primogems')
 
 module.exports = {
     check_characters,
@@ -16,4 +17,5 @@ module.exports = {
     give_primogems,
     multi_pull,
     single_pull,
+    give_all_primogems,
 }

@@ -91,6 +91,16 @@ client.on("message", (message) => {
             return;
         }
 
+        case (getCommand === "giveall") : {
+            commands.give_all_primogems.execute(message, args)
+            return;
+        }
+        
+        case (getCommand === "message") : {
+            commands.message.execute(message, args)
+            return;
+        }
+
         case (getCommand === "help") : {
             commands.help.execute(message, args, Discord)
             return;
