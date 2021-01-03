@@ -126,9 +126,12 @@ const claimWeekly = async (guildId, userId) => {
                     const now = new Date().getTime()
                     
                     const time = ms(timeout - (now - then))
+                    hours = time.hours + 1
                     minutes = time.minutes + 1
-                    if (minutes === 60) {
+                    if (hours === 24 && minutes === 60) {
                         msg = `you've already claim your weekly primogems. Come back in **${time.days+1}d ${time.hours+1}h 0m.**`
+                    } else if (minutes === 60) {
+                        msg = `you've already claim your weekly primogems. Come back in **${time.days}d ${time.hours+1}h 0m.**`
                     } else {
                         msg = `you've already claim your weekly primogems. Come back in **${time.days}d ${time.hours}h ${time.minutes+1}m.**`
                     }

@@ -27,7 +27,8 @@ module.exports = {
             `__**UTILITY**__\n`+
             `**$primogems**: Check the remaining primogems.\n`+
             `**$primogems @User**: Check the remaining primogems of mentioned user.\n`+
-            `**$give @User <Primogems>**: (admin) Gift primogems to mentioned user.\n\n`+
+            `**$give @User <Primogems>**: (admin) Give primogems to mentioned user.\n`+
+            `**$giveall <Primogems>**: (admin) Give primogems to all user.\n\n`+
 
             `__**OPTIONS/FILTER LIST:**__\n`+
             `List of flags (options/filters):\n`+
