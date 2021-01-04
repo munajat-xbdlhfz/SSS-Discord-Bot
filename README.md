@@ -51,7 +51,7 @@ WELCOME_ID = <paste welcome channel ID>
 GOODBYE_ID = <paste goodbye channel ID>
 ```
 9. Go to mongo.js file, change the mongoPath
-```
+```js
 const mongoPath = process.env.MONGO_PATH
 ```
 
