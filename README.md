@@ -1,8 +1,13 @@
 # SSS-Discord-Bot
 
-## Install node module
+## Install dependencies
 ```
 npm install discord.js
+npm install dotenv
+npm install mongoose
+npm install ms
+npm install node-cron
+npm install parse-ms
 ```
 
 If you want to try this bot on your own discord, you must create your own bot.
