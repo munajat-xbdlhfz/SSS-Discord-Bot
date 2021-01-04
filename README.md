@@ -60,7 +60,7 @@ GOODBYE_ID = <paste goodbye channel ID>
 const mongoPath = process.env.MONGO_PATH
 ```
 
-## EXAMPLE OF .env FILE
+## Example .env
 ```
 MONGO_PATH = mongodb://localhost:27017/sss-discord-bot
 BOT_TOKEN = 1QaZ2WsX3EdC4RfV5.TgB6YhN.7UjM8Ik9oL0P
@@ -77,3 +77,26 @@ If you want to change the welcoming text, go to commands, general_commands, welc
 
 ## Note about Genshin Impact daily and weekly claim
 Daily and weekly always reset on 3:00 AM (GMT +7). If you want to change the daily and weekly reset, go to functions folder, claim.js.
+
+## Example change daily on 13:00 PM
+```js
+cron.schedule('0 13 * * 0-6', async () => {
+    return await mongo().then(async (mongoose) => {
+        try {
+            const time = {userId:"TIME_RESET"}
+            // SET NEW DAILY TIME
+            await dailyPrimogemsSchema.findOneAndUpdate(time, time, {
+                upsert: true
+            })
+
+            // RESET CLAIM ALL USER
+            await dailyPrimogemsSchema.updateMany({claim: true}, {claim: false}, {
+                upsert: true
+            })  
+        } catch (err) { console.log(err) }
+    })
+}, {
+    scheduled: true,
+    timezone: "Asia/Jakarta"
+})
+```
