@@ -73,8 +73,7 @@ DEV_ID is your discord ID
 ## Welcoming Page
 ![alt text](https://cdn.discordapp.com/attachments/784676159795232801/795774742476619847/Screenshot_61.png)
 
-If you want to change the welcoming text, go to commands, general_commands, welcome.js
-Change text on name and value inside the .addFields
+If you want to change the welcoming text, go to commands, general_commands, welcome.js, change text on name and value inside the .addFields
 
 ## Note about genshin daily and weekly claim
 Daily and weekly always reset on 3:00 AM (GMT +7). If you want to change the daily and weekly reset, go to functions folder, claim.js.
