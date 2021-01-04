@@ -50,6 +50,10 @@ ADMIN_ID = <paste admin roles ID>
 WELCOME_ID = <paste welcome channel ID>
 GOODBYE_ID = <paste goodbye channel ID>
 ```
+9. Go to mongo.js file, change the mongoPath
+```
+const mongoPath = process.env.MONGO_PATH
+```
 
 ## EXAMPLE OF .env FILE
 ```
