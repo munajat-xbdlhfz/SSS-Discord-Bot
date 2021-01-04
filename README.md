@@ -68,6 +68,7 @@ DEV_ID = 147258369326159487
 WELCOME_ID = 664521867649875978
 GOODBYE_ID = 785593545712205904
 ```
+DEV_ID is your discord ID
 
 ## Welcoming Page
 ![alt text](https://cdn.discordapp.com/attachments/784676159795232801/795766060167069767/Screenshot_59.png)
