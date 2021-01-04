@@ -78,7 +78,7 @@ If you want to change the welcoming text, go to commands, general_commands, welc
 ## Note about Genshin Impact daily and weekly claim
 Daily and weekly always reset on 3:00 AM (GMT +7). If you want to change the daily and weekly reset, go to functions folder, claim.js.
 
-## Example change daily at 01:00 PM
+## Example change daily at 01:00 PM GMT +7
 ```js
 cron.schedule('0 13 * * 0-6', async () => {
     return await mongo().then(async (mongoose) => {
