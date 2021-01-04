@@ -71,7 +71,7 @@ GOODBYE_ID = 785593545712205904
 DEV_ID is your discord ID
 
 ## Welcoming Page
-![alt text](https://cdn.discordapp.com/attachments/784676159795232801/795766060167069767/Screenshot_59.png)
+![alt text](https://cdn.discordapp.com/attachments/784676159795232801/795774742476619847/Screenshot_61.png)
 
 If you want to change the welcoming text, go to commands, general_commands, welcome.js
 Change text on name and value inside the .addFields
