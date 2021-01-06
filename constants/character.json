@@ -64,6 +64,11 @@
         "rarity": 4,
         "rarity_text": "four_star"
     },
+    "Rosaria" : {
+        "element": "cryo",
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
     "Ningguang" : {
         "element": "geo",
         "rarity": 4,
@@ -85,6 +90,11 @@
         "rarity_text": "five_star"
     },
     "Klee" : {
+        "element": "pyro",
+        "rarity": 5,
+        "rarity_text": "five_star"
+    },
+    "Hu Tao" : {
         "element": "pyro",
         "rarity": 5,
         "rarity_text": "five_star"
