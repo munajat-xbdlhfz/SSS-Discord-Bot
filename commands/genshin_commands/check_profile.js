@@ -28,7 +28,7 @@ module.exports = {
             // Print name
             ctx.font = '27px HYWenHei';
             ctx.fillStyle = 'rgb(236, 229, 216)';
-            ctx.fillText(message.member.displayName, 282, 59);
+            ctx.fillText(sender.username, 282, 59);
 
             // Print Pity
             ctx.textAlign = 'end';

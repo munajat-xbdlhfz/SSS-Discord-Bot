@@ -25,6 +25,7 @@ module.exports = {
             `**$multipull**: Gacha 10x.\n\n`+
 
             `__**UTILITY**__\n`+
+            `**$profile**: Check user profile.\n`+
             `**$primogems**: Check the remaining primogems.\n`+
             `**$primogems @User**: Check the remaining primogems of mentioned user.\n`+
             `**$give @User <Primogems>**: (admin) Give primogems to mentioned user.\n`+
