@@ -14,7 +14,7 @@ module.exports = {
             },
         )
         .setThumbnail(guildMember.user.displayAvatarURL())
-        .setImage("https://cdn.discordapp.com/attachments/732668771231334501/785608609760936017/people.jpg")
+        .setImage("https://cdn.discordapp.com/attachments/732668771231334501/798533259063066644/Welcome_SSS.png")
         // .setTimestamp()
         .setFooter("Let's hunt together & Happy Hunting!");
 
