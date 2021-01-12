@@ -76,6 +76,11 @@ client.on("message", (message) => {
             return;
         }
 
+        case (getCommand === "profile") : {
+            commands.check_profile.execute(message, args, Discord)
+            return;
+        }
+
         case (getCommand === "daily") : {
             commands.claim_daily.execute(message, args)
             return;

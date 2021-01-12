@@ -1,6 +1,7 @@
 const mongo = require('../mongo')
 const inventorySchema = require('../schemas/inventory-schema')
 const constants = require('../constants')
+const fs = require('fs')
 
 // Standard Wish Banner
 const standardWish = (pitty5Star, pitty4Star) => {
@@ -180,9 +181,57 @@ const printWeapons = async (guildId, userId) => {
     })
 }
 
+// Check Characters Elements
+const checkCharactersElements = async (guildId, userId) => {
+    return await mongo().then(async (mongoose) => {
+        try {
+            let pyro = 0
+            let electro = 0
+            let cryo = 0
+            let hydro = 0
+            let anemo = 0
+            let geo = 0
+            let dendro = 0
+            const userData = {guildId, userId}
+            const getCharacter = await inventorySchema.findOne(userData)
+            const characterConstants = JSON.parse(fs.readFileSync('constants/characters.json', 'utf8'))
+            let ctr
+            for (ctr = 0; ctr < getCharacter.characters.length; ctr += 1) {
+                const chr = characterConstants[getCharacter.characters[ctr].name]
+                if (chr.element === 'pyro') {
+                    pyro += 1
+                } else if (chr.element === 'electro') {
+                    electro += 1
+                } else if (chr.element === 'cryo') {
+                    cryo += 1
+                } else if (chr.element === 'hydro') {
+                    hydro += 1
+                } else if (chr.element === 'anemo') {
+                    anemo += 1
+                } else if (chr.element === 'geo') {
+                    geo += 1
+                } else if (chr.element === 'dendro') {
+                    dendro += 1
+                }
+            }
+
+            return {
+                pyro,
+                electro,
+                cryo,
+                hydro,
+                anemo,
+                geo,
+                dendro,
+            }
+        } catch (err) { console.log(err) }
+    })
+}
+
 module.exports = {
     standardWish,
     assignItem,
     printCharacters,
     printWeapons,
+    checkCharactersElements,
 }

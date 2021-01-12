@@ -1,0 +1,157 @@
+{
+    "Fischl" : {
+        "element": "electro",
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
+    "Beidou" : {
+        "element": "electro",
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
+    "Lisa" : {
+        "element": "electro",
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
+    "Razor" : {
+        "element": "electro",
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
+    "Amber" : {
+        "element": "pyro",
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
+    "Xiangling" : {
+        "element": "pyro",
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
+    "Bennett" : {
+        "element": "pyro",
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
+    "Xinyan" : {
+        "element": "pyro",
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
+    "Xingqiu" : {
+        "element": "hydro",
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
+    "Barbara" : {
+        "element": "hydro",
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
+    "Diona" : {
+        "element": "cryo",
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
+    "Chongyun" : {
+        "element": "cryo",
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
+    "Kaeya" : {
+        "element": "cryo",
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
+    "Rosaria" : {
+        "element": "cryo",
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
+    "Ningguang" : {
+        "element": "geo",
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
+    "Noelle" : {
+        "element": "geo",
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
+    "Sucrose" : {
+        "element": "anemo",
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
+    "Diluc" : {
+        "element": "pyro",
+        "rarity": 5,
+        "rarity_text": "five_star"
+    },
+    "Klee" : {
+        "element": "pyro",
+        "rarity": 5,
+        "rarity_text": "five_star"
+    },
+    "Hu Tao" : {
+        "element": "pyro",
+        "rarity": 5,
+        "rarity_text": "five_star"
+    },
+    "Keqing" : {
+        "element": "electro",
+        "rarity": 5,
+        "rarity_text": "five_star"
+    },
+    "Jean" : {
+        "element": "anemo",
+        "rarity": 5,
+        "rarity_text": "five_star"
+    },
+    "Venti" : {
+        "element": "anemo",
+        "rarity": 5,
+        "rarity_text": "five_star"
+    },
+    "Xiao" : {
+        "element": "anemo",
+        "rarity": 5,
+        "rarity_text": "five_star"
+    },
+    "Tartaglia" : {
+        "element": "hydro",
+        "rarity": 5,
+        "rarity_text": "five_star"
+    },
+    "Mona" : {
+        "element": "hydro",
+        "rarity": 5,
+        "rarity_text": "five_star"
+    },
+    "Qiqi" : {
+        "element": "cryo",
+        "rarity": 5,
+        "rarity_text": "five_star"
+    },
+    "Ganyu" : {
+        "element": "cryo",
+        "rarity": 5,
+        "rarity_text": "five_star"
+    },
+    "Kamisato Ayaka" : {
+        "element": "cryo",
+        "rarity": 5,
+        "rarity_text": "five_star"
+    },
+    "Zhongli" : {
+        "element": "geo",
+        "rarity": 5,
+        "rarity_text": "five_star"
+    },
+    "Albedo" : {
+        "element": "geo",
+        "rarity": 5,
+        "rarity_text": "five_star"
+    }
+}
