@@ -8,6 +8,7 @@ npm install mongoose
 npm install ms
 npm install node-cron
 npm install parse-ms
+npm install canvas
 ```
 
 If you want to try this bot on your own discord, you must create your own bot.
@@ -15,60 +16,20 @@ If you want to try this bot on your own discord, you must create your own bot.
 ## Link about how to create Discord Bot
 - https://youtu.be/j_sD9udZnCk start at 8:50 (by CodeLyon)
 
-
-After create your own Discord Bot, install MongoDB on your pc.
-
 ## Link about how to install MongoDB
 - https://youtu.be/FwMwO8pXfq0 (by ProgrammingKnowledge)
 
-
-Make sure to activate Developer Mode on your discord.
-
-## Activate Developer Mode on Discord
+## .env file
 ```
-Go to settings on discord -> Appearance -> then activate Developer Mode
+MONGO_PATH = mongodb://localhost:27017/<database name>
+BOT_TOKEN = <your discord server ID>
+ADMIN_ID = <admin roles ID>
+DEV_ID = <your ID>
+WELCOME_ID = <welcome channel ID>
+GOODBYE_ID = <goodbye channel ID>
+GREETINGS_ID = <greetings channel ID>
+RULES_ID = <rules channeld ID>
 ```
-
-## Create .env file
-```
-Create a new file with name .env
-```
-
-## MUST TO DO
-1. Right click on your discord server, then click copy ID.
-2. Type this on .env file:
-```
-MONGO_PATH = mongodb://localhost:27017/<your database name>
-BOT_TOKEN = <paste your discord server ID>
-```
-
-3. Make sure you already create roles with name "ADMINISTRATOR" or "ADMIN" to separate the permissions on users.
-4. Right click on roles name "ADMINISTRATOR" or "ADMIN", then click copy ID.
-5. Type this on .env file:
-```
-ADMIN_ID = <paste admin roles ID>
-```
-6. Create 2 channel with name welcome and goodbye, this channel will notify if users are joining or leaving your discord server.
-7. Right click on welcome channel and goddbye channel, then click copy ID.
-8. Type this on .env file:
-```
-WELCOME_ID = <paste welcome channel ID>
-GOODBYE_ID = <paste goodbye channel ID>
-```
-9. Go to mongo.js file, change the mongoPath
-```js
-const mongoPath = process.env.MONGO_PATH
-```
-
-## Example .env
-```
-MONGO_PATH = mongodb://localhost:27017/sss-discord-bot
-BOT_TOKEN = 1QaZ2WsX3EdC4RfV5.TgB6YhN.7UjM8Ik9oL0P
-DEV_ID = 147258369326159487
-WELCOME_ID = 664521867649875978
-GOODBYE_ID = 785593545712205904
-```
-DEV_ID is your discord ID
 
 ## Welcoming Page
 ![alt text](https://cdn.discordapp.com/attachments/784676159795232801/795774742476619847/Screenshot_61.png)
