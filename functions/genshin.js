@@ -1,5 +1,6 @@
 const mongo = require('../mongo')
 const inventorySchema = require('../schemas/inventory-schema')
+const profileSchema = require('../schemas/profile-schema')
 const constants = require('../constants')
 const fs = require('fs')
 
