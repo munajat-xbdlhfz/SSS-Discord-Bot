@@ -35,8 +35,9 @@ const getPrimogems = async (guildId, userId) => {
             let primogems = 0
             let pitty5Star = 0
             let pitty4Star = 0
+            let namecard = "default"
             const userData = {guildId, userId}
-            const newUser = {guildId, userId, primogems, pitty5Star, pitty4Star}
+            const newUser = {guildId, userId, primogems, pitty5Star, pitty4Star, namecard}
             const result = await profileSchema.findOne(userData)
 
             if (result) {

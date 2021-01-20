@@ -26,6 +26,8 @@ module.exports = {
 
             `__**UTILITY**__\n`+
             `**$profile**: Check user profile.\n`+
+            `**$setnamecard default**: Change profile namecard to default.\n`+
+            `**$setnamecard <Character>**: Change profile namecard to character namecard.\n`+
             `**$primogems**: Check the remaining primogems.\n`+
             `**$primogems @User**: Check the remaining primogems of mentioned user.\n`+
             `**$give @User <Primogems>**: (admin) Give primogems to mentioned user.\n`+

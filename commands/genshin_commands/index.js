@@ -8,6 +8,7 @@ const multi_pull = require('./multi_pull')
 const single_pull = require('./single_pull')
 const give_all_primogems = require('./give_all_primogems')
 const check_profile = require('./check_profile')
+const set_namecard = require('./set_namecard')
 
 module.exports = {
     check_characters,
@@ -20,4 +21,5 @@ module.exports = {
     single_pull,
     give_all_primogems,
     check_profile,
+    set_namecard,
 }

@@ -228,10 +228,83 @@ const checkCharactersElements = async (guildId, userId) => {
     })
 }
 
+// Set User Namecard
+const setNamecard = async (guildId, userId, character) => {
+    return await mongo().then(async (mongoose) => {
+        try {
+            const path = `./img/${character}.jpg`
+            const userData = {guildId, userId}
+            const change = {guildId, userId, namecard: character}
+            const newUser = {guildId, userId, primogems: 0, pitty5Star: 0, pitty4Star: 0, namecard: "default"}
+            const getCharacter = await inventorySchema.findOne(userData)
+
+            // Check if user have inventories
+            if (!getCharacter) {
+                await new inventorySchema(userData).save()
+                const user = await profileSchema.findOne(userData)
+                // Check if user have profile
+                if (!user) {
+                    await new profileSchema(newUser).save()
+                }
+
+                return false
+            }
+
+            // If user set namecard to default
+            if (character === "default") {
+                const set = await profileSchema.findOneAndUpdate(userData, change, {
+                    upsert: true,
+                    new: true
+                })
+                return true
+            }
+
+            // Check if namecard are exist
+            if (fs.existsSync(path)) {
+                for (ctr = 0; ctr < getCharacter.characters.length; ctr += 1) {
+                    const char = getCharacter.characters[ctr].name.toLowerCase()
+                    if (char === character) {
+                        const set = await profileSchema.findOneAndUpdate(userData, change, {
+                            upsert: true,
+                            new: true
+                        })
+                        return true
+                    }
+                }
+            } else {
+                return false
+            }
+ 
+        } catch (err) { console.log(err) }
+    })
+}
+
+// Get User Namecard
+const getNamecard = async (guildId, userId) => {
+    return await mongo().then(async (mongoose) => {
+        try {
+            const userData = {guildId, userId}
+            const newNamecard = {guildId, userId, namecard: "default"}
+            const get = await profileSchema.findOne(userData)
+            if (!get.namecard) {
+                const set = await profileSchema.findOneAndUpdate(userData, newNamecard, {
+                    upsert: true,
+                    new: true
+                })
+
+                return "default"
+            }
+            return get.namecard
+        } catch (err) { console.log(err) }
+    })
+}
+
 module.exports = {
     standardWish,
     assignItem,
     printCharacters,
     printWeapons,
     checkCharactersElements,
+    setNamecard,
+    getNamecard,
 }

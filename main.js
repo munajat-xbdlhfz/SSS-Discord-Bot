@@ -81,6 +81,11 @@ client.on("message", (message) => {
             return;
         }
 
+        case (getCommand === "setnamecard") : {
+            commands.set_namecard.execute(message, args)
+            return;
+        }
+
         case (getCommand === "daily") : {
             commands.claim_daily.execute(message, args)
             return;
