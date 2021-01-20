@@ -15,7 +15,8 @@ const profileSchema = mongoose.Schema({
     userId: reqString,
     primogems: reqNumber,
     pitty5Star: reqNumber,
-    pitty4Star: reqNumber
+    pitty4Star: reqNumber,
+    namecard: reqString,
 })
 
 module.exports = mongoose.model('profiles', profileSchema)
