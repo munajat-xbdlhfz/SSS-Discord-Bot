@@ -29,7 +29,7 @@ module.exports = {
             // Print user name
             ctx.font = '32px HYWenHei'
             ctx.fillStyle = 'rgb(236, 229, 216)'
-            ctx.fillText(message.member.displayName, 285, 95)
+            ctx.fillText(sender.username, 285, 95)
 
             // Print user ID
             ctx.font = '15px HYWenHei'
