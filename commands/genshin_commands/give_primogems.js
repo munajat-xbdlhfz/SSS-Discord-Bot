@@ -8,7 +8,7 @@ module.exports = {
     expectedArgs: "<The target's @> <primogems amount>",
     permissionError: `You don't have permission to use this command.`,
     permission: 'ADMINISTRATOR, DEVELOPER',
-    async execute (message, args) {
+    async execute (message, args, emoji) {
         const mention = message.mentions.users.first()
         
         // Check if user is administrator or dev
@@ -29,7 +29,8 @@ module.exports = {
             const guildId = message.guild.id
             const userId = mention.id
             const newPrimogems = await addPrimogems(guildId, userId, primogems)
-            message.reply(`you have given <@${userId}> ${primogems} ✦. They now have ${newPrimogems} ✦`)
+            const primogemEmoji = emoji("800621901906706512")
+            message.reply(`you have given <@${userId}> **${primogems}**${primogemEmoji}. They now have **${newPrimogems}**${primogemEmoji}`)
         } else {
             message.reply(`you don't have permission to use this command.`)
         }

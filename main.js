@@ -2,13 +2,17 @@ const Discord = require("discord.js");
 const mongo = require('./mongo');
 const commandList = require('./commands/index')
 const client = new Discord.Client();
-// client.commands = new Discord.Collection();
 
 // Login discord bot
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN)
 
 // Set bot prefix
-const prefix = "$";
+const prefix = "$"
+
+// Get emoji function
+function emoji(id) {
+    return client.emojis.cache.get(id).toString()
+}
 
 // Get command from commands file
 const commands = {
@@ -17,12 +21,12 @@ const commands = {
 }
 
 client.once("ready", async () => {
-    console.log(`S.S.S-BOT is online!`);
+    console.log(`S.S.S-BOT is online!`)
     await mongo().then(mongoose => {
         try {
-            console.log("connected to mongo!");
+            console.log("connected to mongo!")
         } finally {
-            mongoose.connection.close();
+            mongoose.connection.close()
         }
     })
 
@@ -52,17 +56,17 @@ client.on("message", (message) => {
 
     switch(getCommand != null) {
         case (getCommand === "multipull" || getCommand === "mp") : {
-            commands.multi_pull.execute(message, args, Discord)
+            commands.multi_pull.execute(message, args, Discord, emoji)
             return
         }
 
         case (getCommand === "singlepull" || getCommand === "sp") : {
-            commands.single_pull.execute(message, args, Discord)
+            commands.single_pull.execute(message, args, Discord, emoji)
             return;
         }
 
         case (getCommand === "primogems") : {
-            commands.check_primogems.execute(message, args)
+            commands.check_primogems.execute(message, args, emoji)
             return;
         }
 
@@ -87,22 +91,32 @@ client.on("message", (message) => {
         }
 
         case (getCommand === "daily") : {
-            commands.claim_daily.execute(message, args)
+            commands.claim_daily.execute(message, args, emoji)
             return;
         }
 
         case (getCommand === "weekly") : {
-            commands.claim_weekly.execute(message, args)
+            commands.claim_weekly.execute(message, args, emoji)
             return;
         }
 
         case (getCommand === "give") : {
-            commands.give_primogems.execute(message, args)
+            commands.give_primogems.execute(message, args, emoji)
             return;
         }
 
         case (getCommand === "giveall") : {
-            commands.give_all_primogems.execute(message, args)
+            commands.give_all_primogems.execute(message, args, emoji)
+            return;
+        }
+
+        case (getCommand === "shop") : {
+            commands.shop.execute(message, args, Discord, emoji)
+            return;
+        }
+        
+        case (getCommand === "buy") : {
+            commands.buy_primogems.execute(message, args, Discord, emoji)
             return;
         }
         
@@ -112,7 +126,7 @@ client.on("message", (message) => {
         }
 
         case (getCommand === "help") : {
-            commands.help.execute(message, args, Discord)
+            commands.help.execute(message, args, Discord, emoji)
             return;
         }
 

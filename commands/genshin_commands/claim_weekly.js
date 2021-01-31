@@ -3,11 +3,13 @@ const { claimWeekly } = require('../../functions/claim')
 module.exports = {
     name: "claim_weekly",
     description: "Claim weekly primogems",
-    async execute (message, args) {
+    async execute (message, args, emoji) {
         const sender = message.author;
         const guildId = message.guild.id
         const userId = sender.id
-        const claim = await claimWeekly(guildId, userId)
-        message.reply(claim)
+        const primogemEmoji = emoji("800621901906706512")
+        const claim = await claimDaily(guildId, userId)
+        const msg = `you have claimed **${primogems}**${primogemEmoji}`
+        message.reply(msg)
     }
 }

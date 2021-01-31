@@ -6,7 +6,7 @@ module.exports = {
     expectedArgs: "<primogems amount>",
     permissionError: `You don't have permission to use this command.`,
     permission: 'ADMINISTRATOR, DEVELOPER',
-    async execute (message, args) {
+    async execute (message, args, emoji) {
         // Check if user is administrator or dev
         if (message.member.roles.cache.has(process.env.ADMIN_ID) || message.author.id ===  process.env.DEV_ID) {
             // Check if value of primogems is a number
@@ -18,7 +18,8 @@ module.exports = {
 
             const guildId = message.guild.id
             const newPrimogems = await giveAllPrimogems(guildId, primogems)
-            message.reply(`you have given all user's ${primogems} ✦.`)
+            const primogemEmoji = emoji("800621901906706512")
+            message.reply(`you have given all user's **${primogems}**${primogemEmoji}`)
         } else {
             message.reply(`you don't have permission to use this command.`)
         }

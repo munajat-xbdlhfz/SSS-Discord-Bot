@@ -58,7 +58,7 @@ const claimDaily = async (guildId, userId) => {
             const updateData = {guildId, userId, claim: true}
             const resetTime = {userId:"TIME_RESET"}
             const claim = {guildId, userId, $inc: { primogems }}
-            const newUser = {guildId, userId, primogems, pitty5Star: 0, pitty4Star: 0, namecard: "default"}
+            const newUser = {guildId, userId, primogems, stardust: 0, pitty5Star: 0, pitty4Star: 0, namecard: "default"}
             
             const result = await dailyPrimogemsSchema.findOne(userData)
             const resetClaim = await dailyPrimogemsSchema.findOne(resetTime)
@@ -98,8 +98,7 @@ const claimDaily = async (guildId, userId) => {
                 await new inventorySchema(userData).save()
             }
 
-            msg = `you have claimed ${primogems} ✦`
-            return msg
+            return primogems
         } catch (err) { console.log(err) } 
     })
 }
@@ -114,7 +113,7 @@ const claimWeekly = async (guildId, userId) => {
             const updateData = {guildId, userId, claim: true}
             const resetTime = {userId:"TIME_RESET"}
             const claim = {guildId, userId, $inc: { primogems }}
-            const newUser = {guildId, userId, primogems, pitty5Star: 0, pitty4Star: 0, namecard: "default"}
+            const newUser = {guildId, userId, primogems, stardust: 0, pitty5Star: 0, pitty4Star: 0, namecard: "default"}
             
             const result = await weeklyPrimogemsSchema.findOne(userData)
             const resetClaim = await weeklyPrimogemsSchema.findOne(resetTime)
@@ -157,8 +156,7 @@ const claimWeekly = async (guildId, userId) => {
                 await new inventorySchema(userData).save()
             }
 
-            msg = `you have claimed ${primogems} ✦`
-            return msg
+            return primogems
         } catch (err) { console.log(err) } 
     })
 }

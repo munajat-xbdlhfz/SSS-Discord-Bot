@@ -51,6 +51,12 @@ module.exports = {
             ctx.font = '24px HYWenHei'
             ctx.fillText(`${dataUser.primogems}`, 770, 222)
 
+            // Print Masterless Stardust
+            ctx.textAlign = 'end'
+            ctx.fillStyle = '#ffffff'
+            ctx.font = '24px HYWenHei'
+            ctx.fillText(`${dataUser.stardust}`, 586, 222)
+
             // Print Pyro
             ctx.font = '20px HYWenHei'
             ctx.textAlign = 'center'

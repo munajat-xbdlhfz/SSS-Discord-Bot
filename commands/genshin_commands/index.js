@@ -9,6 +9,8 @@ const single_pull = require('./single_pull')
 const give_all_primogems = require('./give_all_primogems')
 const check_profile = require('./check_profile')
 const set_namecard = require('./set_namecard')
+const shop = require('./shop')
+const buy_primogems = require('./buy_primogems')
 
 module.exports = {
     check_characters,
@@ -22,4 +24,6 @@ module.exports = {
     give_all_primogems,
     check_profile,
     set_namecard,
+    shop,
+    buy_primogems,
 }

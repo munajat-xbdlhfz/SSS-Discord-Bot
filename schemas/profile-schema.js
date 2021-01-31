@@ -14,6 +14,7 @@ const profileSchema = mongoose.Schema({
     guildId: reqString,
     userId: reqString,
     primogems: reqNumber,
+    stardust: reqNumber,
     pitty5Star: reqNumber,
     pitty4Star: reqNumber,
     namecard: reqString,
