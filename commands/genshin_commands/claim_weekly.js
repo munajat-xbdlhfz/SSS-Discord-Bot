@@ -9,7 +9,7 @@ module.exports = {
         const userId = sender.id
         const primogemEmoji = emoji("800621901906706512")
         const claim = await claimDaily(guildId, userId)
-        const msg = `you have claimed **${primogems}**${primogemEmoji}`
+        const msg = `you have claimed **${claim}**${primogemEmoji}`
         message.reply(msg)
     }
 }
