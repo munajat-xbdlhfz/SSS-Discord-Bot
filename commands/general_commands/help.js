@@ -7,7 +7,7 @@ module.exports = {
         .setColor('#0000FF')
         .setAuthor("S.S.S", "https://cdn.discordapp.com/attachments/732668771231334501/785610049925152799/sSs_Logo_White.png")
         .setDescription(
-            `${paimonEmoji}**Genshin Impact**\n`+
+            `${paimonEmoji} **Genshin Impact**\n`+
             `Gacha and collect genshin impact characters and weapons.\n\n`+
 
             `__**CLAIM PRIMOGEMS**__\n`+
