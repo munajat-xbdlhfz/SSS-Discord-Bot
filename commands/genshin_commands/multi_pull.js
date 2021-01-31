@@ -27,7 +27,7 @@ module.exports = {
                     msg += ` ${tempReward}\``
                     reward.push(msg)
 
-                    pushReward = assignItem(guildId, userId, tempReward, rarity)
+                    pushReward = await assignItem(guildId, userId, tempReward, rarity)
                     stardust += pushReward
                     if (constants.generalBanner4Star.includes(tempReward)) { dataUser.pitty4Star = 0 }
                     if (constants.generalBanner5Star.includes(tempReward)) { dataUser.pitty5Star = 0 }
