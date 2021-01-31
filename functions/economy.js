@@ -42,7 +42,7 @@ const getPrimogems = async (guildId, userId) => {
             const result = await profileSchema.findOne(userData)
 
             if (result) {
-                primogems = result.
+                primogems = result.primogems
                 stardust = result.stardust
                 pitty5Star = result.pitty5Star
                 pitty4Star = result.pitty4Star
