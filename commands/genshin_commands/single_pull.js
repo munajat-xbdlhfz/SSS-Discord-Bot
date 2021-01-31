@@ -21,7 +21,7 @@ module.exports = {
                 for (let i = 0; i < rarity; i += 1) { msg += '⭐' }
                 msg += ` ${reward}\``
 
-                pushReward = await assignItem(guildId, userId, tempReward, rarity)
+                pushReward = await assignItem(guildId, userId, reward, rarity)
                 stardust += pushReward
                 if (constants.generalBanner4Star.includes(reward)) { dataUser.pitty4Star = 0 }
                 if (constants.generalBanner5Star.includes(reward)) { dataUser.pitty5Star = 0 }
