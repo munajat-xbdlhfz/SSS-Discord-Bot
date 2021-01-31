@@ -30,12 +30,17 @@ const standardWish = (pitty5Star, pitty4Star) => {
 // Save reward into database
 const assignItem = async (guildId, userId, rwrd, rrty) => {
     if (constants.weapons3Star.includes(rwrd)) {
-        return
+        const stardust3Star = 15
+        return stardust3Star
     }
 
     return await mongo().then(async (mongoose) => {
         try {
             const userData = {guildId, userId}
+            let stardust4Star = 30
+            let stardust4StarC6 = 75
+            let stardust5Star = 150
+            let newCharWeapon = 0
 
             if (constants.characters.includes(rwrd)) {
                 const checkReward = {guildId, userId, characters: { $elemMatch: { name: rwrd }}}
@@ -50,9 +55,18 @@ const assignItem = async (guildId, userId, rwrd, rrty) => {
                                 const update = await inventorySchema.updateOne(checkReward, {
                                     $set: { "characters.$.constelation": conste }
                                 })
-                                return
+
+                                if (rrty == 5) {
+                                    return stardust5Star
+                                } else if (rrty == 4) {
+                                    return stardust4Star
+                                }
                             } else {
-                                return
+                                if (rrty == 5) {
+                                    return stardust5Star
+                                } else if (rrty == 4) {
+                                    return stardust4StarC6
+                                }
                             }
                         } 
                     }
@@ -69,7 +83,7 @@ const assignItem = async (guildId, userId, rwrd, rrty) => {
                         upsert: true,
                         new: true
                     })
-                    return
+                    return newCharWeapon
                 }
             } else if (constants.weapons.includes(rwrd)) {
                 const checkReward = {guildId, userId, weapons: { $elemMatch: { name: rwrd }}}
@@ -83,7 +97,12 @@ const assignItem = async (guildId, userId, rwrd, rrty) => {
                             const update = await inventorySchema.updateOne(checkReward, {
                                 $set: { "weapons.$.total": total }
                             })
-                            return
+                            
+                            if (rrty == 5) {
+                                return stardust5Star
+                            } else if (rrty == 4) {
+                                return stardust4Star
+                            }
                         }
                     }
                 } else {
@@ -99,12 +118,10 @@ const assignItem = async (guildId, userId, rwrd, rrty) => {
                         upsert: true,
                         new: true
                     })
-                    return
+                    return newCharWeapon
                 }
             }
-
-            return
-        } catch (err) { console.log(err) } 
+        } catch (err) { console.log(err) }
     })
 }
 
