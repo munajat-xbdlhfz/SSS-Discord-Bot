@@ -7,9 +7,7 @@ module.exports = {
         const sender = message.author;
         const guildId = message.guild.id
         const userId = sender.id
-        const primogemEmoji = emoji("800621901906706512")
-        const claim = await claimDaily(guildId, userId)
-        const msg = `you have claimed **${claim}**${primogemEmoji}`
-        message.reply(msg)
+        const claim = await claimWeekly(guildId, userId, emoji)
+        message.reply(claim)
     }
 }

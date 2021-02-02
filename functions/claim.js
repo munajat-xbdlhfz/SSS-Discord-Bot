@@ -48,7 +48,7 @@ cron.schedule('0 3 * * Monday', async () => {
     timezone: "Asia/Jakarta"
 })
 
-const claimDaily = async (guildId, userId) => {
+const claimDaily = async (guildId, userId, emoji) => {
     return await mongo().then(async (mongoose) => {
         try {
             let msg
@@ -98,12 +98,13 @@ const claimDaily = async (guildId, userId) => {
                 await new inventorySchema(userData).save()
             }
 
-            return primogems
+            const primogemEmoji = emoji("800621901906706512")
+            return `you have claimed **${primogems}**${primogemEmoji}`
         } catch (err) { console.log(err) } 
     })
 }
 
-const claimWeekly = async (guildId, userId) => {
+const claimWeekly = async (guildId, userId, emoji) => {
     return await mongo().then(async (mongoose) => {
         try {
             let msg
@@ -156,7 +157,8 @@ const claimWeekly = async (guildId, userId) => {
                 await new inventorySchema(userData).save()
             }
 
-            return primogems
+            const primogemEmoji = emoji("800621901906706512")
+            return `you have claimed **${primogems}**${primogemEmoji}`
         } catch (err) { console.log(err) } 
     })
 }
