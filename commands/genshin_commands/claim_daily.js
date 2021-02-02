@@ -7,7 +7,7 @@ module.exports = {
         const sender = message.author;
         const guildId = message.guild.id
         const userId = sender.id
-        const claim = await claimWeekly(guildId, userId, emoji)
+        const claim = await claimDaily(guildId, userId, emoji)
         message.reply(claim)
     }
 }
