@@ -32,7 +32,7 @@ module.exports = {
                 }
             } else if (primogems == 16000) {
                 if (dataUser.stardust >= 7500) { 
-                    const currentPrimogems = await buyPrimogems(guild, userId, 7500) 
+                    const currentPrimogems = await buyPrimogems(guildId, userId, 7500) 
                     message.reply(`successfully buyed **16000${primogemEmoji}**, now you have **${currentPrimogems}**${primogemEmoji}`)
                     return
                 }
