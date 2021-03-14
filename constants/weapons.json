@@ -131,6 +131,10 @@
         "rarity": 4,
         "rarity_text": "four_star"
     },
+    "Lithic Spear": {
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
     "Favonius Greatsword": {
         "rarity": 4,
         "rarity_text": "four_star"
@@ -144,6 +148,10 @@
         "rarity_text": "four_star"
     },
     "The Bell": {
+        "rarity": 4,
+        "rarity_text": "four_star"
+    },
+    "Lithic Blade": {
         "rarity": 4,
         "rarity_text": "four_star"
     },
@@ -232,6 +240,14 @@
         "rarity_text": "five_star"
     },
     "Memory of Dust": {
+        "rarity": 5,
+        "rarity_text": "five_star"
+    },
+    "Primordial Jade Cutter": {
+        "rarity": 5,
+        "rarity_text": "five_star"
+    },
+    "Staff of Homa": {
         "rarity": 5,
         "rarity_text": "five_star"
     }
