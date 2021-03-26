@@ -1,7 +1,8 @@
-const Discord = require("discord.js");
-const mongo = require('./mongo');
+const Discord = require("discord.js")
+const mongo = require('./mongo')
 const commandList = require('./commands/index')
-const client = new Discord.Client();
+const client = new Discord.Client()
+const cron = require('node-cron')
 
 // Login discord bot
 client.login(process.env.BOT_TOKEN)
@@ -36,6 +37,20 @@ client.once("ready", async () => {
         }
     })
 });
+
+// RESET HEROKU ACCOUNT
+cron.schedule('0 0 25 1-12 *', async () => {
+    return await mongo().then(async (mongoose) => {
+        try {
+            // SEND REMINDER MESSAGE TO DEV
+            const dev = process.env.DEV_ID
+            client.users.cache.get(dev).send(`Change HEROKU account! (FREE DYNO WILL STOP RUNNING)`)
+        } catch (err) { console.log(err) }
+    })
+}, {
+    scheduled: true,
+    timezone: "Asia/Jakarta"
+})
 
 // Send embedded greetings for new visitor on welcoming-page channel
 client.on("guildMemberAdd", guildMember => {
