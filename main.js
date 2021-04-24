@@ -39,7 +39,7 @@ client.once("ready", async () => {
 });
 
 // RESET HEROKU ACCOUNT
-cron.schedule('0 0 25 1-12 *', async () => {
+cron.schedule('0 0 24 1-12 *', async () => {
     return await mongo().then(async (mongoose) => {
         try {
             // SEND REMINDER MESSAGE TO DEV
