@@ -18,6 +18,10 @@ module.exports = {
         // .setTimestamp()
         .setFooter("Let's hunt together & Happy Hunting!");
 
+        if (guildMember.guild.id != process.env.GUILD_ID) {
+            return
+        }
+
         const channel = guildMember.guild.channels.cache.get(process.env.WELCOME_ID)
         channel.send(newEmbed)
     }
