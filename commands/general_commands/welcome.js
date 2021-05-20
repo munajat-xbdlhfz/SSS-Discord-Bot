@@ -9,7 +9,7 @@ module.exports = {
         `**WELCOME TO RISE OF MONSTER SLAYER (S.S.S)**\n`+
         `Selamat datang ${guildMember.toString()}, **${guildMember.user.tag}**\n\n`+
         "**`- How To Become SSS Slayer`**\n"+
-        `Silahkan menuju <#${process.env.RULES_ID}> untuk melihat langkah-langkahnya.\n\n`+
+        `Silahkan menuju <#${process.env.SSS_ID}> untuk melihat langkah-langkahnya.\n\n`+
         "**`- Get Roles`**\n"+
         `Ambil beberapa role di <#${process.env.ROLES_ID}> sesuai dengan apa yang kamu mainkan.\n\n`+
         "**`- Greetings`**\n"+
