@@ -11,7 +11,7 @@ module.exports = {
         "**`- How To Become SSS Slayer`**\n"+
         `Silahkan menuju <#${process.env.RULES_ID}> untuk melihat langkah-langkahnya.\n\n`+
         "**`- Get Roles`**\n"+
-        `Ambil beberapa role di <#${process.env.ROLES_ID}> seasuai dengan apa yang kamu mainkan.\n\n`+
+        `Ambil beberapa role di <#${process.env.ROLES_ID}> sesuai dengan apa yang kamu mainkan.\n\n`+
         "**`- Greetings`**\n"+
         `Perkenalkan diri di <#${process.env.GREETINGS_ID}> biar akrab dengan yang lain.\n\n`+
         `**Let's Hunt Together & Happy Hunting!**\n`
