@@ -20,7 +20,7 @@ module.exports = {
             const canvas = Canvas.createCanvas(800, 400)
             const ctx = canvas.getContext('2d')
 
-            const background = await Canvas.loadImage(`img/${namecard}.jpg`)
+            const background = await Canvas.loadImage(`img/genshin/${namecard}.jpg`)
             ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
 
             ctx.strokeStyle = '#74037b'
