@@ -1,0 +1,28 @@
+const { Client, ActivityType } = require("discord.js")
+
+require("dotenv").config();
+
+const mongoose = require("mongoose");
+const database = process.env.DATABASE_URL;
+
+module.exports = {
+    name: "ready",
+    once: true,
+    /**
+     * 
+     * @param {Client} client 
+     */
+    execute(client) {
+        console.log(`Client logged in as ${client.user.username}`);
+        client.user.setActivity('S.S.S Server', { type: ActivityType.Watching });
+
+        if (!database) return;
+
+        mongoose.connect(database, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        }).then(() => {
+            console.log("Client connected to database!");
+        }).catch((err) => console.log(err));
+    }
+}
