@@ -70,9 +70,9 @@ module.exports = {
             `**Let's Hunt Together & Happy Hunting!**`
         )
         .addFields([
-            { name: `📖 Rules`, value: `<#955726672328536096>`, inline: true },
-            { name: `🎮 Get Roles`, value: `<#955729454775271424>`, inline: true },
-            { name: `🤝 Greetings`, value: `<#1003418104459702352>`, inline: true },
+            { name: `📖 Rules`, value: `<#767423151117566012>`, inline: true },
+            { name: `🎮 Get Roles`, value: `<#865190815227969557>`, inline: true },
+            { name: `🤝 Greetings`, value: `<#654189481586327552>`, inline: true },
         ])
         .setImage(`attachment://welcome.png`)
         .setTimestamp()
