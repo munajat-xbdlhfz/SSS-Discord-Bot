@@ -1,7 +1,8 @@
 const { 
     SlashCommandBuilder, 
     CommandInteraction,
-    AttachmentBuilder
+    AttachmentBuilder,
+    PermissionFlagsBits
  } = require("discord.js");
 const Canvas = require("@napi-rs/canvas");
 require("dotenv").config();
@@ -10,7 +11,7 @@ module.exports = {
     developer: true,
     data: new SlashCommandBuilder()
         .setName("emit")
-        .setDescription("Emit guild member add")
+        .setDescription("Emit code")
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
     /**
      * 
