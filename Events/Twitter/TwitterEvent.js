@@ -12,7 +12,7 @@ const twitter = new Twitter({
     access_token_secret: process.env.TWITTER_TOKEN_SECRET,
 })
 
-twitter.stream('statuses/filter', { follow: '2301111102' }, async function(stream) {
+twitter.stream('statuses/filter', { follow: '306490355' }, async function(stream) {
     await stream.on("data", function(tweet) {
         try {
             if (!tweet.retweeted_status & !tweet.in_reply_to_user_id)

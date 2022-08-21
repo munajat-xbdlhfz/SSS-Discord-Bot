@@ -1,29 +1,29 @@
-const { GuildMember ,EmbedBuilder, WebhookClient } =  require("discord.js");
-
+const { Client, ChatInputCommandInteraction, EmbedBuilder, WebhookClient } = require("discord.js")
 require("dotenv").config();
 
 module.exports = {
     name: "guildMemberRemove",
     /**
      * 
-     * @param {GuildMember} oldMember 
+     * @param {ChatInputCommandInteraction} interaction 
+     * @param {Client} client 
      */
-    execute(oldMember) {
-        const { user, guild} = oldMember;
+    async execute(interaction, client) {
+        const { user, guild } = interaction
 
-        const webhook = new WebhookClient({ url: process.env.GOODBYE_WEBHOOK_URL })
-        
-        const embed = new EmbedBuilder()
+        const webhook = new WebhookClient({ url: process.env.GOODBYE_WEBHOOK_URL });
+
+        const goodbye = new EmbedBuilder()
             .setColor("Red")
             .setAuthor({ name: `${user.tag}`, iconURL: user.displayAvatarURL() })
             .setThumbnail(user.displayAvatarURL())
-            .setDescription(`**${oldMember.displayName}** has left the community.`)
+            .setDescription(`**${interaction.displayName}** has left the community.`)
             .addFields([
-                { name: `Server Member Since`, value: `📅 <t:${parseInt(oldMember.joinedTimestamp / 1000)}:F>` },
+                { name: `Server Member Since`, value: `📅 <t:${parseInt(interaction.joinedTimestamp / 1000)}:F>` },
                 { name: `Latest Member Count`, value: `👥 **${guild.memberCount}** members in server.` },
             ])
             .setFooter({ text: `ID: ${user.id}` });
 
-        webhook.send({ embeds: [embed] });
+        webhook.send({ embeds: [goodbye] });
     }
 }

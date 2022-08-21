@@ -1,20 +1,28 @@
-const { GuildMember, WebhookClient, EmbedBuilder, AttachmentBuilder } = require("discord.js");
-
-const Canvas  = require("canvas");
-require("dotenv").config();
+const { 
+    Client, 
+    CommandInteraction, 
+    ChatInputCommandInteraction,  
+    EmbedBuilder,
+    AttachmentBuilder, 
+    GuildMember,
+    WebhookClient
+} = require("discord.js")
+const Canvas = require("canvas")
+require("dotenv")
 
 module.exports = {
     name: "guildMemberAdd",
     /**
      * 
-     * @param {GuildMember} newMember 
+     * @param {ChatInputCommandInteraction} intearction 
+     * @param {Client} client 
      */
-    async execute(newMember) {
-        const { guild, user } = newMember;
-        
-        // if (newMember.guild.id != process.env.GUILD_ID) return;
+    async execute(intearction, client) {
+        const { user, guild } = intearction
 
-        // Welcome Webhook
+        // TEST SENDING CONSOLE.LOG 1
+        console.log("EXECUTE 1")
+
         const webhook = new WebhookClient({ url: process.env.WELCOME_WEBHOOK_URL });
 
         Canvas.registerFont('./Fonts/HYWenHei.ttf', { family: 'HYWenHei', style: 'Heavy', weight: 'Bold' })
@@ -44,8 +52,8 @@ module.exports = {
         ctx.fillText(user.tag.toUpperCase(), canvas.width / 2, canvas.height / 1.1);
 
         // Set Profile Picture
-        const avatar = await Canvas.loadImage(user.displayAvatarURL({format: "jpeg"}));
-            
+        const avatar = await Canvas.loadImage(user.displayAvatarURL({format: "png"}));
+
         let x = canvas.width / 2 - 100
         let y = canvas.height / 2 - 100
         ctx.beginPath();
@@ -58,7 +66,7 @@ module.exports = {
         ctx.clip();
         ctx.drawImage(avatar, x, y, 200, 200);
 
-        const attachment = await new AttachmentBuilder(canvas.toBuffer(), { name: 'welcome.png' });
+        const attachment = new AttachmentBuilder(canvas.toBuffer(), { name: 'welcome.png' });
 
         // Set Welcome Embed
         const welcome = new EmbedBuilder()
@@ -70,13 +78,16 @@ module.exports = {
             `**Let's Hunt Together & Happy Hunting!**`
         )
         .addFields([
-            { name: `📖 Rules`, value: `<#767423151117566012>`, inline: true },
-            { name: `🎮 Get Roles`, value: `<#865190815227969557>`, inline: true },
-            { name: `🤝 Greetings`, value: `<#654189481586327552>`, inline: true },
+            { name: `📖 Rules`, value: `<#${process.env.RULES_CHANNEL_ID}>`, inline: true },
+            { name: `🎮 Get Roles`, value: `<#${process.env.ROLES_CHANNEL_ID}>`, inline: true },
+            { name: `🤝 Greetings`, value: `<#${process.env.GREETINGS_CHANNEL_ID}>`, inline: true },
         ])
         .setImage(`attachment://welcome.png`)
         .setTimestamp()
         .setFooter({ text: `Member #${guild.memberCount}`, iconURL: guild.iconURL() });
+
+        // TEST SENDING CONSOLE.LOG 1
+        console.log("EXECUTE 2")
 
         await webhook.send({
             content: `Welcome ${user} **(${user.tag})**,`, 
