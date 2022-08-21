@@ -30,6 +30,9 @@ module.exports = {
         let fontSize = 50;
         const ctx = canvas.getContext("2d");
 
+        // TEST SENDING CONSOLE.LOG 2
+        console.log("EXECUTE 2")
+
         // Load Image Background
         const background = await Canvas.loadImage("./Structures/Images/welcome.png");
         ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
@@ -65,9 +68,6 @@ module.exports = {
         ctx.closePath();
         ctx.clip();
         ctx.drawImage(avatar, x, y, 200, 200);
-        
-        // TEST SENDING CONSOLE.LOG 2
-        console.log("EXECUTE 2")
 
         const attachment = new AttachmentBuilder(canvas.toBuffer(), { name: 'welcome.png' });
 
