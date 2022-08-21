@@ -15,7 +15,7 @@ module.exports = {
 
         const goodbye = new EmbedBuilder()
             .setColor("Red")
-            .setAuthor({ name: `${user.tag}`, iconURL: user.displayAvatarURL() })
+            .setAuthor({ name: `${user.tag}`, iconURL: user.displayAvatarURL({ format: "png" }) })
             .setThumbnail(user.displayAvatarURL())
             .setDescription(`**${interaction.displayName}** has left the community.`)
             .addFields([
