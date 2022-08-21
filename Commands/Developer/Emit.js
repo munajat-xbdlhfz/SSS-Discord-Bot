@@ -11,8 +11,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("emit")
         .setDescription("Emit guild member add")
-        // .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
-        ,
+        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
     /**
      * 
      * @param {CommandInteraction} interaction 
