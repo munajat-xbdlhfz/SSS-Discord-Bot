@@ -5,8 +5,8 @@ const {
 } = require("discord.js")
 
 const linkModal = require("../Buttons/link-modal")
-const { timeout } = require("../../Functions/Timeout")
-const { escapeMarkdown } = require("../../Functions/EscapeMarkdown")
+const { timeout } = require("../../Functions/Timeout/ModalTimeout")
+const { escapeMarkdown } = require("../../Functions/Markdown/EscapeMarkdown")
 
 module.exports = {
     data: {

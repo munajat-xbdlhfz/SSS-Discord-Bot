@@ -11,6 +11,7 @@ module.exports = {
     async execute(interaction, client) {
         const { user, guild } = interaction
 
+        const date = new Date()
         const webhook = new WebhookClient({ url: process.env.GOODBYE_WEBHOOK_URL });
 
         const goodbye = new EmbedBuilder()
@@ -19,7 +20,7 @@ module.exports = {
             .setThumbnail(user.displayAvatarURL())
             .setDescription(`**${interaction.displayName}** has left the community.`)
             .addFields([
-                { name: `Server Member Since`, value: `📅 <t:${parseInt(interaction.joinedTimestamp / 1000)}:F>` },
+                { name: `Member Left Since`, value: `📅 <t:${parseInt(date.getTime() / 1000)}:F>` },
                 { name: `Latest Member Count`, value: `👥 **${guild.memberCount}** members in server.` },
             ])
             .setFooter({ text: `ID: ${user.id}` });

@@ -1,6 +1,6 @@
 const { EmbedBuilder } = require("discord.js")
 
-const { escapeMarkdown } = require("../../Functions/EscapeMarkdown")
+const { escapeMarkdown } = require("../../Functions/Markdown/EscapeMarkdown")
 
 module.exports = {
     data: {

@@ -1,4 +1,4 @@
-const { twitterPost } = require("../../Functions/TwitterPost")
+const { twitterPost } = require("../../Functions/Twitter/TwitterPost")
 const Twitter = require("twitter")
 
 require("dotenv").config();
