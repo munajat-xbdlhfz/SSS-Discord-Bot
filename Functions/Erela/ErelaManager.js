@@ -5,14 +5,20 @@ const Spotify = require("erela.js-spotify")
 require("dotenv").config();
 
 function loadErela(client) {
+    const erelaHost = process.env.ERELA_HOST
+    const erelaPassword = process.env.ERELA_PASSWORD
+    const erelaPort = parseInt(process.env.ERELA_PORT)
+    const erelaSecure = process.env.ERELA_SECURE === "true"
+
     const clientID = process.env.SPOTIFY_CLIENT_ID
     const clientSecret = process.env.SPOTIFY_CLIENT_SECRET
 
     return new Manager({
         nodes: [{
-            host: process.env.ERELA_HOST,
-            password: process.env.ERELA_PASSWORD,
-            port: 80,
+            host: erelaHost,
+            password: erelaPassword,
+            port: erelaPort,
+            secure: erelaSecure
         }],
         plugins: [
             new Spotify({
