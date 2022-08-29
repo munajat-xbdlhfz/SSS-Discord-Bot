@@ -4,9 +4,9 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const database = process.env.DATABASE_URL;
 
-function keepAlive() {
-    console.log("Heroku-SSS: running keepAlive.")
-}
+// function keepAlive() {
+//     console.log("Heroku-SSS: running keepAlive.")
+// }
 
 module.exports = {
     name: "ready",
@@ -29,7 +29,7 @@ module.exports = {
             console.log("Client connected to database!");
         }).catch((err) => console.log(err));
 
-        console.log("I will visit myself every 20 minutes to prevent this bot from sleeping after 30 minutes of inactivity.")
-        setInterval(keepAlive, 20*60*1000)
+        // console.log("I will visit myself every 20 minutes to prevent this bot from sleeping after 30 minutes of inactivity.")
+        // setInterval(keepAlive, 20*60*1000)
     }
 }

@@ -46,8 +46,6 @@ function loadErela(client) {
     .on("playerMove", (player, oldChannel, newChannel) => {
         player.options.voiceChannel = newChannel
         player.setVoiceChannel(newChannel)
-
-        console.log(player)
     })
 }
 
