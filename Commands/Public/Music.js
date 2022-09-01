@@ -26,6 +26,7 @@ module.exports = {
 
                 await guild.channels.create({ name: `music-request` }, {
                     type: "GUILD_TEXT",
+                    topic: "⏯ Resume/Pause the song.\n⏭ Skip the song.\n🔁 Switch between the loop modes.\n🔀 Shuffle the queue.\n⏹ Stop the song.",
                     permissionOverwrites: [{
                         id: guild.roles.everyone,
                         allow: ["VIEW_CHANNEL", "SEND_MESSAGES", "READ_MESSAGE_HISTORY"],
@@ -38,8 +39,8 @@ module.exports = {
                     interaction.reply({ embeds: [embed] })
 
                     client.channels.cache.get(channel.id).send({
-                        embeds: [queueEmbed(), playEmbed(client)],
-                        components: [musicButton()]
+                        embeds: [await queueEmbed(), await playEmbed(client)],
+                        components: [await musicButton()]
                     }).then(async msg => {
                         await musicSchema.findOneAndUpdate(
                             { GuildID: guild.id }, 
