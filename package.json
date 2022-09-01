@@ -4,7 +4,8 @@
   "description": "Discord bot for Rise of Monster Slayer (S.S.S), a Monster Hunter Community from Indonesia. This bot support slash command and purpose of this bot is to manage S.S.S Discord Server.",
   "main": "main.js",
   "engines": {
-    "node": "16.17.0"
+    "node": "16.17.0",
+    "npm": "8.15.0"
   },
   "scripts": {
     "start": "node main.js",
@@ -18,7 +19,7 @@
     "ascii-table": "^0.0.9",
     "discord.js": "^14.3.0",
     "dotenv": "^16.0.2",
-    "erela.js": "^2.3.3",
+    "erela.js": "github:menudocs/erela.js#build",
     "erela.js-spotify": "^1.2.0",
     "mongoose": "^6.5.4",
     "probe-image-size": "^7.2.3",
