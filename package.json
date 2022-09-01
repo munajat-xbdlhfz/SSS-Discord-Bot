@@ -1,10 +1,6 @@
 {
   "name": "sss_discord_bot",
   "version": "1.0.0",
-  "engines": {
-    "node": "16.13.0",
-    "npm": "8.3.0"
-  },
   "description": "",
   "main": "main.js",
   "scripts": {
@@ -15,14 +11,14 @@
   "author": "DARKZERO",
   "license": "ISC",
   "dependencies": {
-    "@napi-rs/canvas": "^0.1.28",
+    "@napi-rs/canvas": "^0.1.29",
     "ascii-table": "^0.0.9",
     "canvas": "^2.9.3",
     "discord.js": "^14.3.0",
-    "dotenv": "^16.0.1",
+    "dotenv": "^16.0.2",
     "erela.js": "^2.3.3",
     "erela.js-spotify": "^1.2.0",
-    "mongoose": "^6.5.3",
+    "mongoose": "^6.5.4",
     "probe-image-size": "^7.2.3",
     "twitter": "^1.7.1"
   }
