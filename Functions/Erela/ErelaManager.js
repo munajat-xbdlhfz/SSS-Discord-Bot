@@ -2,6 +2,7 @@ const { Manager } = require("erela.js")
 const { setMusicReply, setReplyError } = require("../Music/MusicReply") 
 const { setLeaveTimeout, clearLeaveTimeout } = require("../Timeout/MusicTimeout")
 const Spotify = require("erela.js-spotify")
+const wait = require("node:timers/promises").setTimeout;
 require("dotenv").config();
 
 function loadErela(client) {
@@ -49,9 +50,14 @@ function loadErela(client) {
     .on("playerDestroy", player => {
         setMusicReply(client, player)
     })
-    .on("playerMove", (player, oldChannel, newChannel) => {
-        player.options.voiceChannel = newChannel
-        player.setVoiceChannel(newChannel)
+    .on("playerMove", async (player, oldChannel, newChannel) => {
+        if (!newChannel) {
+            return player.destroy();
+        } else {
+            player.voiceChannel = newChannel;
+            await wait(1000);
+            player.pause(false);
+        }
     })
     .on("trackError", (player) => {
         setReplyError(client, player, "track error")
