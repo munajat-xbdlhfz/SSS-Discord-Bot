@@ -18,60 +18,73 @@ async function erelaPlayer(message, client, options) {
             if (player.state !== "CONNECTED") 
                 player.connect();
 
-            const res = await client.manager.search(message.content, message.author)
+            try {
+                const res = await client.manager.search(message.content, message.author)
 
-            if (res.loadType === "LOAD_FAILED") {
-                if (!player.queue.current) 
-                    player.destroy();
-                
-                desc = "An error has occured while trying to add this song."
-                return await messageReply(message, client, desc)
-            }
-
-            if (res.loadType === "NO_MATCHES") {
-                if (!player.queue.current) 
-                    player.destroy();
-             
-                desc = "No results found."
-                return await messageReply(message, client, desc)
-            }
-
-            if (res.loadType === "PLAYLIST_LOADED") {
-                if (player.queue.current) {
-                    player.queue.add(res.tracks);
-    
-                    if (!player.playing && !player.paused)
-                        player.play();
-    
-                    setMusicReply(client, player, player.queue.current)
-                } else {
-                    player.queue.add(res.tracks);
-    
-                    if (!player.playing && !player.paused)
-                        player.play();
-                }
-
-                desc = `A playlist ${res.playlist.name} has been added to the queue.`
-                return await messageReply(message, client, desc)
-            }
-
-            if (res.loadType === "TRACK_LOADED" || res.loadType === "SEARCH_RESULT") {
-                if (player.queue.current) {
-                    player.queue.add(res.tracks[0]);
-    
-                    if (!player.playing && !player.paused && !player.queue.size)
-                        player.play();
+                if (res.loadType === "LOAD_FAILED") {
+                    if (!player.queue.current) 
+                        player.destroy();
                     
-                    setMusicReply(client, player, player.queue.current)
-                } else {
-                    player.queue.add(res.tracks[0]);
-    
-                    if (!player.playing && !player.paused && !player.queue.size)
-                        player.play();
+                    desc = "An error has occured while trying to add this song."
+                    return await messageReply(message, client, desc)
                 }
-                
-                desc = `Added ${res.tracks[0].title} to the queue.`
-                return await messageReply(message, client, desc)
+    
+                if (res.loadType === "NO_MATCHES") {
+                    if (!player.queue.current) 
+                        player.destroy();
+                 
+                    desc = "No results found."
+                    return await messageReply(message, client, desc)
+                }
+    
+                if (res.loadType === "PLAYLIST_LOADED") {
+                    if (player.queue.current) {
+                        player.queue.add(res.tracks);
+        
+                        if (!player.playing && !player.paused)
+                            player.play();
+        
+                        setMusicReply(client, player, player.queue.current)
+                    } else {
+                        player.queue.add(res.tracks);
+        
+                        if (!player.playing && !player.paused)
+                            player.play();
+                    }
+    
+                    desc = `A playlist ${res.playlist.name} has been added to the queue.`
+                    return await messageReply(message, client, desc)
+                }
+    
+                if (res.loadType === "TRACK_LOADED" || res.loadType === "SEARCH_RESULT") {
+                    if (player.queue.current) {
+                        player.queue.add(res.tracks[0]);
+        
+                        if (!player.playing && !player.paused && !player.queue.size)
+                            player.play();
+                        
+                        setMusicReply(client, player, player.queue.current)
+                    } else {
+                        player.queue.add(res.tracks[0]);
+        
+                        if (!player.playing && !player.paused && !player.queue.size)
+                            player.play();
+                    }
+    
+                    desc = `Added ${res.tracks[0].title} to the queue.`
+                    return await messageReply(message, client, desc)
+                }
+            } catch (e) {
+                const embed = new EmbedBuilder()
+                    .setColor("Red")
+                    .setDescription(`There was an error while searching: **${message.content}**`)
+
+                console.log(e.message)
+                return message.reply({ 
+                    embeds: [embed] 
+                }).then(msg => {
+                    setTimeout(() => msg.delete(), 3000)
+                })
             }
         }
         break;
