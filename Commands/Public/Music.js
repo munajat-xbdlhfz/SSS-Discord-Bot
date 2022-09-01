@@ -1,7 +1,4 @@
-const { 
-    SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, 
-    ButtonStyle, ButtonInteraction, SelectMenuBuilder, PermissionFlagsBits 
-} =  require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } =  require("discord.js");
 const { musicButton } = require("../../Functions/Music Components/MusicButton")
 const { playEmbed, queueEmbed } = require("../../Functions/Music Components/MusicEmbed")
 const musicSchema = require("../../Structures/Schemas/MusicChannel")
@@ -16,6 +13,8 @@ module.exports = {
         ),
     async execute(interaction, client) {
         const { guild } = interaction
+            
+        try {
             musicSchema.findOne({ GuildID: guild.id }, async (err, data) => {
                 if (err) throw err;
 
@@ -50,10 +49,13 @@ module.exports = {
                     })
                 })
             })
-        try {
-
         } catch (e) {
+            const embed = new EmbedBuilder()
+                .setColor("Red")
+                .setDescription(`An error occured: ${e}`)
+
             console.log(e)
+            return message.reply({ embeds: [embed] })
         }
     }
 }
