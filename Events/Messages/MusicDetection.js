@@ -1,4 +1,4 @@
-const { Client, CommandInteraction } = require("discord.js")
+const { Client, CommandInteraction, EmbedBuilder } = require("discord.js")
 const { erelaPlayer } = require("../../Functions/Erela/ErelaPlayer")
 const musicSchema = require("../../Structures/Schemas/MusicChannel")
 
@@ -48,7 +48,12 @@ module.exports = {
                 return message.delete().catch(() => {});
             })
         } catch(e) {
+            const embed = new EmbedBuilder()
+                .setColor("Red")
+                .setDescription(`An error occured: ${e}`)
+
             console.log(e)
+            return message.reply({ embeds: [embed] })
         }
     }
 }
