@@ -34,10 +34,10 @@ function loadErela(client) {
         }
     })
     .on("nodeConnect", node => {
-        console.log(`Node "${node.options.identifier}" connected.`)
+        console.log(`[Erela] Node "${node.options.identifier}" connected.`)
     })
     .on("nodeError", (node, error) => {
-        console.log(`Node "${node.options.identifier}" encountered an error: ${error.message}.`)
+        console.log(`[Erela] Node "${node.options.identifier}" encountered an error: ${error.message}.`)
     })
     .on("trackStart", (player, track) => {
         setMusicReply(client, player, track)
