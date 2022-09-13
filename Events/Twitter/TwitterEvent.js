@@ -5,6 +5,8 @@ const wait = require("node:timers/promises").setTimeout;
 
 module.exports.name = "twitterEvent"
 
+console.log("[Twitter] Node Twit connected.")
+
 var twitter = new Twit({
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
     consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
@@ -24,17 +26,6 @@ stream.on('tweet', function(tweet) {
     }
 })
 
-stream.on('connected', function (response) {
-    console.log("[Twitter] stream.on is connected.")
-})
-
-stream.on('disconnect', function (disconnectMessage) {
-    console.log("[Twitter] stream.on is disconnected.")
-})
-
 stream.on('error', async function (error) {
-    console.log(`[Twitter] An error occured on stream.on (${error.message}).`)
-    stream.stop()
-    await wait(1000);
-    stream.start()
+    console.log(`[Twitter] An error occured on Node Twit (${error.message}).`)
 })
