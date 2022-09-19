@@ -1,7 +1,7 @@
-const { Manager } = require("erela.js")
-const { setMusicReply, setReplyError } = require("../Music/MusicReply") 
-const { setLeaveTimeout, clearLeaveTimeout } = require("../Timeout/MusicTimeout")
-const Spotify = require("erela.js-spotify")
+const { Manager } = require("erela.js");
+const { setMusicReply, setReplyError } = require("../Music/MusicReply") ;
+const { setLeaveTimeout, clearLeaveTimeout } = require("../Timeout/MusicTimeout");
+const Spotify = require("erela.js-spotify");
 const wait = require("node:timers/promises").setTimeout;
 require("dotenv").config();
 

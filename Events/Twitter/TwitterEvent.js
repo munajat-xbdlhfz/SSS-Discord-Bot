@@ -1,11 +1,10 @@
 const { twitterPost } = require("../../Functions/Twitter/TwitterPost")
 const Twit = require("twit")
 require("dotenv").config()
-const wait = require("node:timers/promises").setTimeout;
 
 module.exports.name = "twitterEvent"
 
-console.log("[Twitter] Node Twit connected.")
+let firstBoot = true
 
 var twitter = new Twit({
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -26,6 +25,16 @@ stream.on('tweet', function(tweet) {
     }
 })
 
+stream.on('connected', function (response) {
+    if (firstBoot) {
+        firstBoot = false
+        return console.log("[Twitter] Node Twit connected.")
+    }
+
+    if (!firstBoot) return
+})
+
 stream.on('error', async function (error) {
-    console.log(`[Twitter] An error occured on Node Twit (${error.message}).`)
+    stream.stop()
+    stream.start()
 })

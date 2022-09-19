@@ -13,7 +13,7 @@ const client = new Client({
     partials: [User, Message, GuildMember, ThreadMember, Channel, Voice],
 });
 
-client.manager = loadErela(client)
+client.manager = loadErela(client);
 client.commands = new Collection();
 client.buttons = new Collection();
 client.selectMenus = new Collection();

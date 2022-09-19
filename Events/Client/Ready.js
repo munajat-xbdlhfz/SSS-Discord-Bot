@@ -1,4 +1,4 @@
-const { Client, ActivityType } = require("discord.js")
+const { Client, ActivityType } = require("discord.js");
 require("dotenv").config();
 
 const mongoose = require("mongoose");

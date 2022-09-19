@@ -61,7 +61,7 @@ module.exports = {
         context.clip();
         context.drawImage(avatar, x, y, 200, 200);
 
-        const attachment = new AttachmentBuilder(await canvas.encode('png'), { name: 'welcome.png' });
+        const attachment = new AttachmentBuilder(canvas.toBuffer(), { name: 'welcome.png' });
 
         // Set Welcome Embed
         const welcome = new EmbedBuilder()
