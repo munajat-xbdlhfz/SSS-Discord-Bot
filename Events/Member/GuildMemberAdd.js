@@ -73,9 +73,9 @@ module.exports = {
             `**Let's Hunt Together & Happy Hunting!**`
         )
         .addFields([
-            { name: `📖 Rules`, value: `<#${process.env.RULES_CHANNEL_ID}>`, inline: true },
-            { name: `🎮 Get Roles`, value: `<#${process.env.ROLES_CHANNEL_ID}>`, inline: true },
-            { name: `🤝 Greetings`, value: `<#${process.env.GREETINGS_CHANNEL_ID}>`, inline: true },
+            { name: `📖 Rules`, value: `<#${process.env.FIELDS_1}>`, inline: true },
+            { name: `🎮 Get Roles`, value: `<#${process.env.FIELDS_2}>`, inline: true },
+            { name: `🌐 MH Lobby`, value: `<#${process.env.FIELDS_3}>`, inline: true },
         ])
         .setImage(`attachment://welcome.png`)
         .setTimestamp()

@@ -67,12 +67,6 @@ module.exports = {
                             if (data.id == webhookId)
                             return webhookToken = data.token
                         })
-    
-                        const webhookClient = new WebhookClient({ id: webhookId, token: webhookToken })
-      
-                        webhookClient.editMessage(messageId, {
-                            components: [new ActionRowBuilder().addComponents(buttonAdd)] 
-                        })
                     })
                 }
             }
