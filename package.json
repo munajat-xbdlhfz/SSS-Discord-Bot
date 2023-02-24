@@ -24,6 +24,7 @@
     "mongoose": "^6.5.4",
     "probe-image-size": "^7.2.3",
     "twit": "^2.2.11",
-    "twitter": "^1.7.1"
+    "twitter": "^1.7.1",
+    "valid-url": "^1.0.9"
   }
 }

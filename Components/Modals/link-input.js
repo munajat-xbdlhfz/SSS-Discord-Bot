@@ -1,4 +1,5 @@
 const { EmbedBuilder } = require("discord.js")
+const validUrl = require("valid-url")
 
 const { escapeMarkdown } = require("../../Functions/Markdown/EscapeMarkdown")
 
@@ -12,7 +13,8 @@ module.exports = {
         const label = interaction.fields.getTextInputValue("labelInput")
         const link = interaction.fields.getTextInputValue("linkInput")
 
-        const embed = new EmbedBuilder()
+        if (validUrl.isUri(link)) {
+            const embed = new EmbedBuilder()
             .setTitle(`Link Button Setup`)
             .setColor("Aqua")
             .setDescription(
@@ -21,10 +23,18 @@ module.exports = {
                 `**3.** Set Link: ${link}\n`
             );
 
-        await interaction.editReply({ 
-            content: "",
-            embeds: [embed], 
-            components: [] 
-        });
+            await interaction.editReply({ 
+                content: "",
+                embeds: [embed], 
+                components: [] 
+            });
+        } else {
+            await interaction.editReply({ 
+                content: "The **Link** field failed validation: Invalid URL.",
+                embeds: [], 
+                components: [],
+                ephemeral: true,
+            })
+        }
     }
 }

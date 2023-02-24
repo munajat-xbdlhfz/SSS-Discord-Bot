@@ -3,7 +3,10 @@ const {
     ChatInputCommandInteraction,  
     EmbedBuilder,
     AttachmentBuilder, 
-    WebhookClient
+    WebhookClient,
+    ButtonBuilder, 
+    ButtonStyle,
+    ActionRowBuilder
 } = require("discord.js")
 const Canvas =  require("@napi-rs/canvas");
 require("dotenv").config();
@@ -63,28 +66,29 @@ module.exports = {
 
         const attachment = new AttachmentBuilder(canvas.toBuffer(), { name: 'welcome.png' });
 
+        // Proceed Button
+        const proceedButton = new ButtonBuilder()
+            .setLabel("Proceed")
+            .setURL(process.env.RULES_LINK)
+            .setStyle(ButtonStyle.Link)
+
         // Set Welcome Embed
         const welcome = new EmbedBuilder()
         .setColor("Aqua")
-        .setAuthor({ name: `WELCOME TO ${guild.name.toUpperCase()}`, iconURL: user.displayAvatarURL({ format: "png" }) })
+        .setAuthor({ name: `WELCOME TO ${guild.name.toUpperCase()}`, iconURL: guild.iconURL() })
         .setDescription(
-            `Selamat datang ${user} di **${guild.name}** Discord Server!\n`+
-            `Pastikan untuk memeriksa channel yang di tandai di bawah!\n`+
+            `Pastikan untuk mengklik button yang ada di bawah ini untuk membaca rules server **${guild.name.toUpperCase()}** dan mengambil role member!\n\n`+
             `**Let's Hunt Together & Happy Hunting!**`
         )
-        .addFields([
-            { name: `📖 Rules`, value: `<#${process.env.FIELDS_1}>`, inline: true },
-            { name: `🎮 Get Roles`, value: `<#${process.env.FIELDS_2}>`, inline: true },
-            { name: `🌐 MH Lobby`, value: `<#${process.env.FIELDS_3}>`, inline: true },
-        ])
         .setImage(`attachment://welcome.png`)
         .setTimestamp()
-        .setFooter({ text: `Member #${guild.memberCount}`, iconURL: guild.iconURL() });
+        .setFooter({ text: `Member #${guild.memberCount}`});
 
         await webhook.send({
             content: `Welcome ${user} **(${user.tag})**,`, 
             embeds: [welcome], 
-            files: [attachment]
+            files: [attachment],
+            components: [new ActionRowBuilder().addComponents(proceedButton)]
         });
     }
 }

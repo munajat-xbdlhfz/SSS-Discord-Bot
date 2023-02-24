@@ -40,7 +40,6 @@ module.exports = {
                     .setMaxValues(1)
                     .addOptions([
                         { label: "🌐 Link", value: `link/${targetMessage.id}/${webhooksArray[0]}` },
-                        { label: "🎮 Role", value: `role/${targetMessage.id}/${webhooksArray[0]}` },
                         { label: "📃 Rules", value: `rules/${targetMessage.id}/${webhooksArray[0]}` },
                     ]);
     
