@@ -36,5 +36,6 @@ stream.on('connected', function (response) {
 
 stream.on('error', async function (error) {
     stream.stop()
-    stream.start()
+    // stream.start()
+    console.log(error.message)
 })
