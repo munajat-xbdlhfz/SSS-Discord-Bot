@@ -170,9 +170,10 @@ async function erelaPlayer(message, client, options) {
 }
 
 async function messageReply(message, client, desc) {
-    musicSchema.findOne({ GuildID: message.guild.id }, async (err, data) => {
-        if (err) throw err;
-        if (!data) return;
+    try {
+        let data = await musicSchema.findOne({ GuildID: message.guild.id })
+
+        if (!data) return
 
         const embed = new EmbedBuilder()
             .setColor("Aqua")
@@ -183,7 +184,14 @@ async function messageReply(message, client, desc) {
         }).then(msg => {
             setTimeout(() => msg.delete(), 3000)
         })
-    })
+    } catch (e) {
+        const embed = new EmbedBuilder()
+            .setColor("Red")
+            .setDescription(`An error occured: ${e}`)
+
+        console.log(e)
+        return message.reply({ embeds: [embed] })
+    }
 }
 
 module.exports = { erelaPlayer }

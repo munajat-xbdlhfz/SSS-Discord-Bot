@@ -16,37 +16,38 @@ module.exports = {
         const voiceChannel = member.voice.channel
 
         try {
-            musicSchema.findOne({ GuildID: guild.id }, async (err, data) => {
-                if (err) throw err;
-                if (!data) return;
-                if (channel.id !== data.ChannelID) return
+            const data = await musicSchema.findOne({ GuildID: guild.id })
 
-                if (!voiceChannel) 
-                    return message.reply({
-                        content: "You must be in a voice channel to be able to use the music commands.", 
-                        ephemeral: true
-                    }).then(msg => {                
-                        setTimeout(() => {
-                            message.delete().catch(() => {})
-                            msg.delete()
-                        }, 3000)
-                    });
+            if (!data) return
+            if (channel.id !== data.ChannelID) return
 
-                if (guild.members.me.voice.channelId && voiceChannel.id !== guild.members.me.voice.channelId)
-                    return message.reply({
-                        content: `I'm already playing music in <#${guild.members.me.voice.channelId}>.`, 
-                        ephemeral: true
-                    }).then(msg => {                
-                        setTimeout(() => {
-                            message.delete().catch(() => {})
-                            msg.delete()
-                        }, 3000)
-                    });
+            if (!voiceChannel) {
+                const msg = await message.reply({
+                    content: "You must be in a voice channel to be able to use the music commands.", 
+                    ephemeral: true
+                });
+                setTimeout(() => {
+                    message.delete().catch(() => {})
+                    msg.delete()
+                }, 3000);
+                return;
+            }
 
-                await erelaPlayer(message, client, "play")
-
-                return message.delete().catch(() => {});
-            })
+            if (guild.members.me.voice.channelId && voiceChannel.id !== guild.members.me.voice.channelId) {
+                const msg = await message.reply({
+                  content: `I'm already playing music in <#${guild.members.me.voice.channelId}>.`, 
+                  ephemeral: true
+                });
+                setTimeout(() => {
+                  message.delete().catch(() => {})
+                  msg.delete()
+                }, 3000);
+                return;
+              }
+            
+              await erelaPlayer(message, client, "play");
+            
+              message.delete().catch(() => {});
         } catch(e) {
             const embed = new EmbedBuilder()
                 .setColor("Red")

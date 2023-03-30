@@ -21,7 +21,7 @@ async function playEmbed(client, player, track) {
     if (!player || !player.queue.current || player.state === "DISCONNECTED") {
         embed.setTitle("No song playing currently")
         embed.setFooter({ text: `${client.user.username}` })
-        embed.setImage("https://cdn.discordapp.com/attachments/835267927632117812/1011831448862462132/headset.jpeg")
+        embed.setImage("https://cdn.discordapp.com/attachments/955726672328536096/1090996896144822354/headset.jpeg")
     } else {
         volume = player.volume
         if (!player.trackRepeat && !player.queueRepeat)
@@ -34,7 +34,7 @@ async function playEmbed(client, player, track) {
         embed.setTitle(`${escapeMarkdown(track.title)} - ${musicDuration(track)}`)
         embed.setFooter({ text: `${client.user.username} | Volume: ${volume}% | Loop: ${loop}` })
         if (!track.thumbnail) {
-            embed.setImage("https://cdn.discordapp.com/attachments/835267927632117812/1011831448862462132/headset.jpeg")
+            embed.setImage("https://cdn.discordapp.com/attachments/955726672328536096/1090996896144822354/headset.jpeg")
         }
         else {
             const img = await getSize(track.displayThumbnail("maxresdefault"))

@@ -4,8 +4,9 @@ const { playEmbed, queueEmbed } = require("./MusicEmbed")
 const musicSchema = require("../../Structures/Schemas/MusicChannel")
 
 async function setMusicReply(client, player, track) {
-    musicSchema.findOne({ GuildID: player.options.guild }, async (err, data) => {
-        if (err) throw err;
+    try {
+        let data = await musicSchema.findOne({ GuildID: player.options.guild })
+
         if (!data) return;
 
         const queue = await queueEmbed(player)
@@ -18,12 +19,15 @@ async function setMusicReply(client, player, track) {
                 components: [button]
             })
         });
-    })
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 async function setReplyError(client, player, options) {
-    musicSchema.findOne({ GuildID: player.options.guild }, async (err, data) => {
-        if (err) throw err;
+    try {
+        let data = await musicSchema.findOne({ GuildID: player.options.guild })
+
         if (!data) return;
 
         const embed = new EmbedBuilder()
@@ -35,7 +39,9 @@ async function setReplyError(client, player, options) {
         }).then(msg => {
             setTimeout(() => msg.delete(), 3000)
         })
-    })
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 module.exports = { 
