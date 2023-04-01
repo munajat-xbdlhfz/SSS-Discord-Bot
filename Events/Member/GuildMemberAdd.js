@@ -64,7 +64,8 @@ module.exports = {
         context.clip();
         context.drawImage(avatar, x, y, 200, 200);
 
-        const attachment = new AttachmentBuilder(canvas.toBuffer(), { name: 'welcome.png' });
+        const buffer = canvas.toBuffer('image/png')
+        const attachment = new AttachmentBuilder(buffer, { name: 'welcome.png' });
 
         // Proceed Button
         const proceedButton = new ButtonBuilder()
