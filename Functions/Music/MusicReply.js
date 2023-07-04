@@ -1,50 +1,74 @@
-const { EmbedBuilder } = require("discord.js")
 const { musicButton } = require("./MusicButton")
-const { playEmbed, queueEmbed } = require("./MusicEmbed")
+const { playEmbed, queueEmbed } = require('./MusicEmbed')
 const musicSchema = require("../../Structures/Schemas/MusicChannel")
 
-async function setMusicReply(client, player, track) {
+const setMusicReply = async (client, queue, track) => {
     try {
-        let data = await musicSchema.findOne({ GuildID: player.options.guild })
+        let data = await musicSchema.findOne({ GuildID: queue.options.guild.id})
 
-        if (!data) return;
+        if (!data) return
 
-        const queue = await queueEmbed(player)
-        const play = await playEmbed(client, player, track)
-        const button = await musicButton()
+        const queueEmbeds = await queueEmbed(queue, track)
+        const playEmbeds = await playEmbed(client, queue, track)
+        const buttonComponents = await musicButton()
 
         return client.channels.cache.get(data.ChannelID).messages.fetch(data.EmbedID).then(msg => {
             msg.edit({
-                embeds: [queue, play],
-                components: [button]
+                embeds: [queueEmbeds, playEmbeds],
+                components: [buttonComponents]
             })
-        });
-    } catch (e) {
-        console.log(e)
-    }
-}
-
-async function setReplyError(client, player, options) {
-    try {
-        let data = await musicSchema.findOne({ GuildID: player.options.guild })
-
-        if (!data) return;
-
-        const embed = new EmbedBuilder()
-            .setColor("Red")
-            .setDescription(`Something when wrong while playing the track: **${options}**`)
-
-        return client.channels.cache.get(data.ChannelID).send({
-            embeds: [embed]
-        }).then(msg => {
-            setTimeout(() => msg.delete(), 3000)
         })
-    } catch (e) {
-        console.log(e)
+    } catch (error) {
+        console.log(error.message)
     }
 }
 
-module.exports = { 
+const updateQueue = async (client, queue) => {
+    try {
+        let data = await musicSchema.findOne({ GuildID: queue.options.guild.id})
+
+        if (!data) return
+
+        const queueEmbeds = await queueEmbed(queue)
+        const buttonComponents = await musicButton()
+
+        return client.channels.cache.get(data.ChannelID).messages.fetch(data.EmbedID).then(msg => {
+            msg.edit({
+                embeds: [queueEmbeds, msg.embeds[1]],
+                components: [buttonComponents]
+            })
+        })
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+const updateRepeat = async (client, queue, mode) => {
+    try {
+        let data = await musicSchema.findOne({ GuildID: queue.options.guild.id})
+
+        if (!data) return
+
+        const buttonComponents = await musicButton()
+
+        return client.channels.cache.get(data.ChannelID).messages.fetch(data.EmbedID).then(msg => {
+            let footerText = msg.embeds[1].data.footer.text.split(" | ")
+            let newFooterText = `${footerText[0]} | Loop: ${mode}`
+
+            msg.embeds[1].data.footer.text = newFooterText
+
+            msg.edit({
+                embeds: [msg.embeds[0], msg.embeds[1]],
+                components: [buttonComponents]
+            })
+        })
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+module.exports = {
     setMusicReply,
-    setReplyError,
+    updateQueue,
+    updateRepeat,
 }

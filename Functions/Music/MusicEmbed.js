@@ -1,87 +1,124 @@
 const { EmbedBuilder } = require("discord.js")
-const { musicDuration } = require("./MusicTimeConvert")
-const { escapeMarkdown } = require("../Markdown/EscapeMarkdown")
-const probe = require("probe-image-size")
+const probe = require('probe-image-size')
+require("dotenv").config()
 
-async function getSize(link) {
+const getImageMetadata = async (url) => {
     try {
-        await probe(link)
-        return "maxresdefault"
-    } catch(e) {
-        return "hqdefault"
+        return await probe(url)
+    } catch (error) {
+        return null
     }
 }
 
-async function playEmbed(client, player, track) {
-    let volume, loop
+const playEmbed = async (client, queue, track) => {
+    const embed = new EmbedBuilder().setColor("Aqua")
+    
+    try {
+        let loop, icon
 
-    const embed = new EmbedBuilder()
-    .setColor("Aqua")
+        if (!track) {
+            embed.setTitle("No song playing currently")
+            embed.setFooter({ text: `${client.user.username}` })
+            embed.setImage(process.env.MUSIC_DEFAULT_THUMBNAIL)
+        } else {
+            switch (queue.repeatMode) {
+                case 0 :
+                    loop = "OFF"
+                    break
+                case 1 :
+                    loop = "TRACK"
+                    break
+                case 2 :
+                    loop = "QUEUE"
+                    break
+            }
 
-    if (!player || !player.queue.current || player.state === "DISCONNECTED") {
-        embed.setTitle("No song playing currently")
-        embed.setFooter({ text: `${client.user.username}` })
-        embed.setImage("https://cdn.discordapp.com/attachments/955726672328536096/1090996896144822354/headset.jpeg")
-    } else {
-        volume = player.volume
-        if (!player.trackRepeat && !player.queueRepeat)
-            loop = "Off"
-        if (player.trackRepeat)
-            loop = "Song"
-        if (player.queueRepeat)
-            loop = "Queue"
+            switch (track.source) {
+                case "youtube" :
+                    icon = "https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
+                    break
+                case "spotify" :
+                    icon = "https://cdn-icons-png.flaticon.com/512/174/174872.png"
+                    break
+                case "soundcloud" :
+                    icon = "https://cdn-icons-png.flaticon.com/512/145/145809.png"
+                    break
+            }
 
-        embed.setTitle(`${escapeMarkdown(track.title)} - ${musicDuration(track)}`)
-        embed.setFooter({ text: `${client.user.username} | Volume: ${volume}% | Loop: ${loop}` })
-        if (!track.thumbnail) {
-            embed.setImage("https://cdn.discordapp.com/attachments/955726672328536096/1090996896144822354/headset.jpeg")
+            let imageMetadata = await getImageMetadata(track.thumbnail)
+
+            const capitalizedSource = track.source.charAt(0).toUpperCase() + track.source.slice(1);
+
+            embed.setTitle(`${track.title} - [${track.duration === "0:00" ? "LIVE" : track.duration}]`)
+            embed.setURL(track.url)
+            embed.setFooter({ text: `Source from ${capitalizedSource} | Loop: ${loop}`, iconURL: icon})
+            
+            // if the thumbnail image is broken, set default image
+            if (imageMetadata)
+                embed.setImage(track.thumbnail)
+            else
+                embed.setImage(process.env.MUSIC_DEFAULT_THUMBNAIL)
         }
-        else {
-            const img = await getSize(track.displayThumbnail("maxresdefault"))
 
-            if (img === "maxresdefault") 
-                embed.setImage(track.displayThumbnail("maxresdefault"))
-            else 
-                embed.setImage(track.displayThumbnail("hqdefault"))
-        }
+        return embed
+    } catch (error) {
+        const embed = new EmbedBuilder()
+            .setColor("Red")
+            .setDescription(`Error on play embed: ${error.message}`)
+
+        return interaction.reply({ embeds: [embed] }).then(reply => {
+            setTimeout(() => {
+                reply.delete();
+            }, 5000)
+        })
     }
-
-    return embed
 }
 
-async function queueEmbed(player) {
-    let maxLength, over
-    let list = ""
-    var number = 0
-
+const queueEmbed = async (queue) => {
     const embed = new EmbedBuilder()
         .setColor("Aqua")
         .setTitle("Queue List:")
 
-    if (!player || player.queue.length < 1 || player.state === "DISCONNECTED")
-        embed.setDescription("Join a voice channel and queue songs by name or url in here.")
-    else {
-        if (player.queue.length > 20) {
-            maxLength = 20
-            over = `And **${player.queue.length - maxLength}** more...`
-        } else {
-            maxLength = player.queue.length
-            over = ``
+    try {
+        let maxLength, over
+        let list = ""
+        var number = 0
+        
+        if (!queue || queue.size < 1)
+            embed.setDescription("Join voice channel and queue songs by name or URL from **Youtube**, **Spotify**, or **Soundcloud** to start enjoying the music!")
+        else {
+            if (queue.size > 20) {
+                maxLength = 20
+                over = `And **${queue.size - maxLength}** more...`
+            } else {
+                maxLength = queue.size
+                over = ``
+            }
+
+            queue.tracks.data.slice(0, maxLength).reverse().map((track) => {
+                if (track.title)
+                list = list + `\n**${maxLength - number}**. ${track.title} - [${track.duration === "0:00" ? "LIVE" : track.duration}]`
+                number ++
+            })
+
+            embed.setDescription(over + list)
         }
 
-        player.queue.slice(0, maxLength).reverse().map((track) => {
-            if (track.title)
-                list = list + `\n**${maxLength - number}**. ${escapeMarkdown(track.title)} - ${musicDuration(track)}`
-            number++
+        return embed
+    } catch (error) {
+        const embed = new EmbedBuilder()
+            .setColor("Red")
+            .setDescription(`Error on queue embed: ${error.message}`)
+
+        return interaction.reply({ embeds: [embed] }).then(reply => {
+            setTimeout(() => {
+                reply.delete();
+            }, 5000)
         })
-
-        embed.setDescription(over + list)
     }
-
-    return embed 
 }
 
 module.exports = {
     playEmbed,
-    queueEmbed,
+    queueEmbed
 }

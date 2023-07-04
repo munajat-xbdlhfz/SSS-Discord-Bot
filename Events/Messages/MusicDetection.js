@@ -1,5 +1,4 @@
 const { Client, CommandInteraction, EmbedBuilder } = require("discord.js")
-const { erelaPlayer } = require("../../Functions/Erela/ErelaPlayer")
 const musicSchema = require("../../Structures/Schemas/MusicChannel")
 
 module.exports = {
@@ -41,20 +40,36 @@ module.exports = {
                 setTimeout(() => {
                   message.delete().catch(() => {})
                   msg.delete()
-                }, 3000);
-                return;
-              }
-            
-              await erelaPlayer(message, client, "play");
-            
-              message.delete().catch(() => {});
-        } catch(e) {
+                }, 3000)
+
+                return
+            }
+
+            await client.player.play(member.voice.channel.id, message.content, {
+                nodeOptions: {
+                    metadata: {
+                        channel: member.voice.channel.id,
+                        client: guild.members.me,
+                        requestedBy: member.user.username
+                    },
+                    volume: 10,
+                    bufferingTimeout: 3000
+                },
+            })
+
+            message.delete().catch(() => {});
+        } catch (error) {
             const embed = new EmbedBuilder()
                 .setColor("Red")
-                .setDescription(`An error occured: ${e}`)
+                .setDescription(error.message)
 
-            console.log(e)
-            return message.reply({ embeds: [embed] })
+            message.reply({ embeds: [embed] }).then(reply => {
+                setTimeout(() => {
+                  reply.delete();
+                }, 5000)
+            })
+
+            return
         }
     }
 }
