@@ -37,11 +37,6 @@ const { SpotifyExtractor, SoundCloudExtractor, YoutubeExtractor } = require('@di
 client.player = new Player(client, {
     deafenOnJoin: true,
     lagMonitor: 1000,
-    ytdlOptions: {
-      filter: "audioonly",
-      quality: "highestaudio",
-      highWaterMark: 1 << 25
-    }
 })
 
 // register the required extractors
