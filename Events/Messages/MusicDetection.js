@@ -1,5 +1,6 @@
 const { Client, CommandInteraction, EmbedBuilder } = require("discord.js")
 const musicSchema = require("../../Structures/Schemas/MusicChannel")
+const { isYoutubeLink } = require("../../Functions/Music/CheckLink")
 
 module.exports = {
     name: "messageCreate",
@@ -45,6 +46,8 @@ module.exports = {
                 return
             }
 
+            if (isYoutubeLink(message.content)) throw new Error("Cannot play music from youtube.")
+
             await client.player.play(member.voice.channel.id, message.content, {
                 nodeOptions: {
                     metadata: {
@@ -52,7 +55,7 @@ module.exports = {
                         client: guild.members.me,
                         requestedBy: member.user.username
                     },
-                    volume: 10,
+                    volume: 50,
                     bufferingTimeout: 3000
                 },
             })
@@ -68,6 +71,8 @@ module.exports = {
                   reply.delete();
                 }, 5000)
             })
+
+            message.delete().catch(() => {});
 
             return
         }

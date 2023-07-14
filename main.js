@@ -31,16 +31,12 @@ client.modals = new Collection()
 const { Player } = require('discord-player')
 
 // import extractors to handle various music sources
-const { SpotifyExtractor, SoundCloudExtractor, YoutubeExtractor } = require('@discord-player/extractor')
+const { SpotifyExtractor, SoundCloudExtractor } = require('@discord-player/extractor')
 
 // this is the entrypoint for discord-player based application
-client.player = new Player(client, {
-    deafenOnJoin: true,
-    lagMonitor: 1000,
-})
+client.player = new Player(client)
 
 // register the required extractors
-client.player.extractors.register(YoutubeExtractor, {})
 client.player.extractors.register(SpotifyExtractor, {})
 client.player.extractors.register(SoundCloudExtractor, {})
 

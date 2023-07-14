@@ -85,7 +85,7 @@ const queueEmbed = async (queue) => {
         var number = 0
         
         if (!queue || queue.size < 1)
-            embed.setDescription("Join voice channel and queue songs by name or URL from **Youtube**, **Spotify**, or **Soundcloud** to start enjoying the music!")
+            embed.setDescription("Join voice channel and queue songs by name or URL from **Spotify**, or **Soundcloud** to start enjoying the music!")
         else {
             if (queue.size > 20) {
                 maxLength = 20
