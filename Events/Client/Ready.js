@@ -15,13 +15,13 @@ module.exports = {
         console.log(`[Discord] Client logged in as ${client.user.username}`)
         client.user.setActivity('S.S.S Server', { type: ActivityType.Watching })
 
-        if (!database) return
+        // if (!database) return
 
-        mongoose.connect(database, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        }).then(() => {
-            console.log("[Discord] Client connected to database!")
-        }).catch((err) => console.log(err))
+        // mongoose.connect(database, {
+        //     useNewUrlParser: true,
+        //     useUnifiedTopology: true,
+        // }).then(() => {
+        //     console.log("[Discord] Client connected to database!")
+        // }).catch((err) => console.log(err))
     }
 }

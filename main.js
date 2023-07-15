@@ -68,7 +68,7 @@ client.player.events.on('disconnect', (queue, track) => {
 client.player.events.on('error', (queue, error) => console.log(`[Discord] Error emitted from the queue: ${error.message}`))
 
 // log in the client using the bot token
-client.login(process.env.BOT_TOKEN).then(() => {
+client.login(process.env.BOT_TOKEN_SSS).then(() => {
     loadEvents(client)
     loadCommands(client)
     loadComponents(client)
